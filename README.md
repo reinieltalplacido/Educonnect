@@ -2,7 +2,7 @@
 
 **EduConnect** is a web-based platform that connects teachers and students in an organized, real-time learning environment. Built for flexibility, simplicity, and real-world school needs — it offers dynamic course management, messaging, and role-based access using Firebase.
 
-> 🏁 **This project was developed as my Final Project** for our Web Systems & Technologies subject at **NEUST – Bachelor of Science in Information Technology (BSIT), 3rd Year**.
+> 🏁 **This project was developed as my Final Project** for our Human Computer Interaction subject at **NEUST – Bachelor of Science in Information Technology (BSIT), 3rd Year**.
 
 ---
 
