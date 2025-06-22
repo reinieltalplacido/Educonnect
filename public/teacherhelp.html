@@ -1,0 +1,570 @@
+teacherhelp.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher - Help</title>
+    <link rel="stylesheet" href="teacherhelp.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+</head>
+
+<body>
+    <header class="top-header">
+        <div class="logo">
+            <span>EduConnect</span>
+        </div>
+    </header>
+    
+    <!-- Sidebar HTML -->
+    <nav class="sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="teacher.html">
+                    <span class="sidebar-icon">🏠</span>
+                    <span class="sidebar-text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="teachercourses.html">
+                    <span class="sidebar-icon">📚</span>
+                    <span class="sidebar-text">Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="teachergrades.html">
+                    <span class="sidebar-icon">📊</span>
+                    <span class="sidebar-text">Grades</span>
+                </a>
+            </li>
+            <li>
+                <a href="teachercalendar.html">
+                    <span class="sidebar-icon">📅</span>
+                    <span class="sidebar-text">Calendar</span>
+                </a>
+            </li>
+            <li>
+                <a href="teacherchat.html">
+                    <span class="sidebar-icon">📨</span>
+                    <span class="sidebar-text">Messages</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="teacherhelp.html">
+                    <span class="sidebar-icon">❓</span>
+                    <span class="sidebar-text">Help</span>
+                </a>
+            </li>
+            <!-- Account moved to bottom -->
+            <li>
+                <a href="teacheraccount.html">
+                    <span class="sidebar-icon">👤</span>
+                    <span class="sidebar-text">Account</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+        <div class="help-content">
+            <div class="help-header">
+                <h1>Teacher Help Center</h1>
+                <p>Find answers to common questions and get assistance with EduConnect's teaching tools</p>
+            </div>
+
+            <!-- Chat Assistant -->
+            <div class="chat-box">
+                <div class="chat-header">
+                    <div class="assistant-avatar">🤖</div>
+                    <div class="assistant-info">
+                        <h3>Teacher's Assistant</h3>
+                        <p>Available 24/7 for your teaching-related questions</p>
+                    </div>
+                </div>
+
+                <div class="bot-message">👋 Hello, Professor! I'm your Teaching Assistant. How can I help you today?
+                </div>
+
+                <div class="options">
+                    <button class="option-btn" data-reply="gradebook">
+                        <span class="option-icon">📊</span>
+                        <span>Using the gradebook</span>
+                    </button>
+                    <button class="option-btn" data-reply="course">
+                        <span class="option-icon">📚</span>
+                        <span>Creating a new course</span>
+                    </button>
+                    <button class="option-btn" data-reply="assignment">
+                        <span class="option-icon">📝</span>
+                        <span>Creating assignments</span>
+                    </button>
+                    <button class="option-btn" data-reply="feedback">
+                        <span class="option-icon">💬</span>
+                        <span>Providing student feedback</span>
+                    </button>
+                    <button class="option-btn" data-reply="quiz">
+                        <span class="option-icon">✏️</span>
+                        <span>Creating quizzes/exams</span>
+                    </button>
+                    <button class="option-btn" data-reply="attendance">
+                        <span class="option-icon">📋</span>
+                        <span>Taking attendance</span>
+                    </button>
+                    <button class="option-btn" data-reply="reports">
+                        <span class="option-icon">📈</span>
+                        <span>Generating reports</span>
+                    </button>
+                </div>
+
+                <div class="chat-response" id="chat-response"></div>
+
+                <div class="custom-question">
+                    <label for="customInput">Have another question?</label>
+                    <input type="text" id="customInput" placeholder="Type your teaching-related question here..." />
+                    <button id="sendCustom">Send</button>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2>📘 Frequently Asked Questions</h2>
+
+                <div class="faq-tabs">
+                    <button class="tab-btn active" data-category="general">General</button>
+                    <button class="tab-btn" data-category="courses">Courses</button>
+                    <button class="tab-btn" data-category="grading">Grading</button>
+                    <button class="tab-btn" data-category="technical">Technical</button>
+                </div>
+
+                <div class="faq-container" id="general">
+                    <div class="faq-item">
+                        <button class="faq-question">How do I update my office hours?</button>
+                        <div class="faq-answer">
+                            <p>To update your office hours:</p>
+                            <ol>
+                                <li>Go to 'Settings' in the sidebar</li>
+                                <li>Click on 'Profile Settings'</li>
+                                <li>Scroll to the 'Office Hours' section</li>
+                                <li>Update your availability</li>
+                                <li>Click 'Save Changes'</li>
+                            </ol>
+                            <p>Your updated office hours will be visible to all students enrolled in your courses.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How do I message all students in my course?</button>
+                        <div class="faq-answer">
+                            <p>To send a message to all students in your course:</p>
+                            <ol>
+                                <li>Navigate to 'Courses' in the sidebar</li>
+                                <li>Select the specific course</li>
+                                <li>Click on the 'Announcements' tab</li>
+                                <li>Select 'New Announcement'</li>
+                                <li>Compose your message</li>
+                                <li>Toggle 'Send as email' if you want students to receive an email copy</li>
+                                <li>Click 'Post Announcement'</li>
+                            </ol>
+                            <p>All enrolled students will receive the announcement on their dashboard and via email if
+                                selected.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How do I add a teaching assistant to my course?</button>
+                        <div class="faq-answer">
+                            <p>To add a teaching assistant:</p>
+                            <ol>
+                                <li>Go to 'Courses' in the sidebar</li>
+                                <li>Select the course you want to add a TA to</li>
+                                <li>Click on 'Course Management'</li>
+                                <li>Select 'Teaching Staff'</li>
+                                <li>Click 'Add Teaching Assistant'</li>
+                                <li>Enter the email address of the TA</li>
+                                <li>Set appropriate permissions</li>
+                                <li>Click 'Send Invitation'</li>
+                            </ol>
+                            <p>The TA will receive an email invitation to join your course with the specified
+                                permissions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-container hidden" id="courses">
+                    <div class="faq-item">
+                        <button class="faq-question">How do I copy content from a previous course?</button>
+                        <div class="faq-answer">
+                            <p>To copy content from a previous course:</p>
+                            <ol>
+                                <li>Go to 'Courses' in the sidebar</li>
+                                <li>Click 'Create New Course'</li>
+                                <li>Fill in the basic course information</li>
+                                <li>At the bottom, select 'Import from Existing Course'</li>
+                                <li>Choose the source course from the dropdown</li>
+                                <li>Select which elements to import (assignments, quizzes, materials, etc.)</li>
+                                <li>Click 'Create Course'</li>
+                            </ol>
+                            <p>All selected content will be copied to your new course with dates adjusted relative to
+                                the new start date.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How do I upload multiple files to my course?</button>
+                        <div class="faq-answer">
+                            <p>To upload multiple files efficiently:</p>
+                            <ol>
+                                <li>Navigate to your course</li>
+                                <li>Go to 'Course Materials' tab</li>
+                                <li>Click 'Add Materials'</li>
+                                <li>Select 'Bulk Upload'</li>
+                                <li>Drag and drop multiple files or click to browse</li>
+                                <li>Organize files into appropriate modules/folders</li>
+                                <li>Click 'Upload All Files'</li>
+                            </ol>
+                            <p>You can upload up to 100MB at once. For larger files, use the course file server option.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How do I set up course groups for projects?</button>
+                        <div class="faq-answer">
+                            <p>To create student groups for team projects:</p>
+                            <ol>
+                                <li>Go to your course page</li>
+                                <li>Select 'Course Management'</li>
+                                <li>Click on 'Groups'</li>
+                                <li>Select 'Create Group Set'</li>
+                                <li>Configure group options (size, self-enrollment, etc.)</li>
+                                <li>Choose to create groups manually or automatically</li>
+                                <li>Set group permissions and options</li>
+                                <li>Click 'Create Groups'</li>
+                            </ol>
+                            <p>You can later assign specific assignments to be completed by groups rather than
+                                individuals.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-container hidden" id="grading">
+                    <div class="faq-item">
+                        <button class="faq-question">How do I create a grading rubric?</button>
+                        <div class="faq-answer">
+                            <p>To create a grading rubric:</p>
+                            <ol>
+                                <li>Go to 'Courses' and select your course</li>
+                                <li>Click on 'Assignments' or 'Assessments'</li>
+                                <li>Select the assignment you want to add a rubric to</li>
+                                <li>Click 'Edit' and scroll to 'Rubric'</li>
+                                <li>Click 'Add Rubric'</li>
+                                <li>Define criteria, performance levels, and point values</li>
+                                <li>Save the rubric</li>
+                            </ol>
+                            <p>You can also save rubrics as templates to reuse across multiple assignments.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How do I provide audio feedback on assignments?</button>
+                        <div class="faq-answer">
+                            <p>To leave audio feedback:</p>
+                            <ol>
+                                <li>Open the assignment submission you're grading</li>
+                                <li>In the feedback section, click the microphone icon</li>
+                                <li>Record your feedback (up to 3 minutes)</li>
+                                <li>Preview the recording</li>
+                                <li>Click 'Save' to attach the audio to your feedback</li>
+                            </ol>
+                            <p>Audio feedback is often appreciated by students as it provides more context and feels
+                                more personal than written comments.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How do I export grades to a spreadsheet?</button>
+                        <div class="faq-answer">
+                            <p>To export your gradebook:</p>
+                            <ol>
+                                <li>Navigate to 'Grades' in the sidebar</li>
+                                <li>Select the course</li>
+                                <li>Click the 'Export' button in the top-right</li>
+                                <li>Choose your export format (Excel, CSV, etc.)</li>
+                                <li>Select what data to include</li>
+                                <li>Click 'Download'</li>
+                            </ol>
+                            <p>Note that any changes made to the downloaded file will not automatically sync back to
+                                EduConnect. To import updated grades, use the 'Import' feature.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-container hidden" id="technical">
+                    <div class="faq-item">
+                        <button class="faq-question">What file types are supported for upload?</button>
+                        <div class="faq-answer">
+                            <p><strong>EduConnect supports the following file types:</strong></p>
+                            <ul>
+                                <li><strong>Documents:</strong> PDF, DOC, DOCX, TXT, RTF, ODT</li>
+                                <li><strong>Spreadsheets:</strong> XLS, XLSX, CSV, ODS</li>
+                                <li><strong>Presentations:</strong> PPT, PPTX, ODP</li>
+                                <li><strong>Images:</strong> JPG, JPEG, PNG, GIF, SVG</li>
+                                <li><strong>Audio:</strong> MP3, WAV, M4A (max 500MB)</li>
+                                <li><strong>Video:</strong> MP4, MOV, AVI (max 2GB)</li>
+                                <li><strong>Archives:</strong> ZIP, RAR (max 1GB)</li>
+                                <li><strong>Other:</strong> HTML, XML</li>
+                            </ul>
+                            <p>Note: Files over 2GB should be shared via external link using the 'Add External Resource'
+                                option.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How do I set up video conferencing for virtual office
+                            hours?</button>
+                        <div class="faq-answer">
+                            <p>To set up video conferencing:</p>
+                            <ol>
+                                <li>Go to 'Settings' in the sidebar</li>
+                                <li>Select 'Integrations'</li>
+                                <li>Connect your preferred video conferencing tool (Zoom, Teams, etc.)</li>
+                                <li>Grant necessary permissions</li>
+                                <li>Go to your course page</li>
+                                <li>Select 'Virtual Meetings'</li>
+                                <li>Click 'Schedule Meeting' and configure settings</li>
+                                <li>Save and publish the meeting link</li>
+                            </ol>
+                            <p>Students will receive notifications and can join directly through the course page.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How do I optimize my course for mobile devices?</button>
+                        <div class="faq-answer">
+                            <p>To ensure your course displays well on mobile devices:</p>
+                            <ul>
+                                <li>Use the 'Mobile Preview' tool in the course editor to see how content appears</li>
+                                <li>Keep file sizes reasonable (compress images before uploading)</li>
+                                <li>Break long content into smaller chunks with clear headings</li>
+                                <li>Use mobile-friendly file formats (MP4 instead of MOV, PDF instead of PPTX)</li>
+                                <li>Test interactive elements on a mobile device</li>
+                                <li>Consider providing alternative formats for complex tables or diagrams</li>
+                            </ul>
+                            <p>Approximately 40% of students access course materials primarily via mobile devices, so
+                                mobile optimization is increasingly important.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Troubleshooting Section -->
+            <div class="troubleshoot-section">
+                <h2>🔧 Common Troubleshooting</h2>
+                <div class="troubleshoot-grid">
+                    <div class="troubleshoot-item">
+                        <h3>Gradebook Not Calculating Correctly</h3>
+                        <div class="solution">
+                            <ol>
+                                <li>Check category weightings add up to 100%</li>
+                                <li>Verify all assignments have correct point values</li>
+                                <li>Ensure "Exclude from Grade Calculation" is not checked</li>
+                                <li>Look for hidden assignments affecting totals</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="troubleshoot-item">
+                        <h3>Students Can't See Course Content</h3>
+                        <div class="solution">
+                            <ol>
+                                <li>Check if content is set to "Published"</li>
+                                <li>Verify release date and time settings</li>
+                                <li>Confirm students are properly enrolled</li>
+                                <li>Check if prerequisite conditions are set</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="troubleshoot-item">
+                        <h3>Quiz Timer Issues</h3>
+                        <div class="solution">
+                            <ol>
+                                <li>Verify time limit is correctly set</li>
+                                <li>Check if "Auto-submit" is enabled</li>
+                                <li>Review settings for extended time accommodations</li>
+                                <li>Ensure browser compatibility for all students</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="troubleshoot-item">
+                        <h3>File Upload Errors</h3>
+                        <div class="solution">
+                            <ol>
+                                <li>Check file size is under limit (2GB max)</li>
+                                <li>Verify file type is supported</li>
+                                <li>Try compressing or converting the file</li>
+                                <li>Clear browser cache or try a different browser</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Card -->
+            <div class="contact-card">
+                <h2>📞 Need Additional Support?</h2>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <span class="contact-icon">👨‍💻</span>
+                        <h3>Faculty Support</h3>
+                        <p>Priority assistance for all teaching needs</p>
+                        <button class="contact-btn">Request Help</button>
+                    </div>
+                    <div class="contact-method">
+                        <span class="contact-icon">📧</span>
+                        <h3>Email Support</h3>
+                        <p>Response within 4 hours during business hours</p>
+                        <a href="mailto:faculty@educonnect.com" class="contact-btn">faculty@educonnect.com</a>
+                    </div>
+                    <div class="contact-method">
+                        <span class="contact-icon">📱</span>
+                        <h3>Faculty Hotline</h3>
+                        <p>Available Mon-Fri: 7AM-9PM</p>
+                        <a href="tel:18005551234" class="contact-btn">1-800-555-TEACH</a>
+                    </div>
+                </div>
+                <div class="support-hours">
+                    <p><strong>Faculty Support Hours:</strong> Monday–Friday, 7AM–9PM | Saturday, 9AM–5PM | Sunday,
+                        12PM-6PM</p>
+                </div>
+            </div>
+
+            <!-- Feedback Section -->
+            <div class="feedback-section">
+                <h2>💭 Share Your Feedback</h2>
+                <p>Help us improve our teaching tools and support resources</p>
+                <form class="feedback-form">
+                    <div class="form-group">
+                        <label for="feedback-topic">What would you like to share?</label>
+                        <select id="feedback-topic">
+                            <option value="suggestion">Feature Suggestion</option>
+                            <option value="improvement">Tool Improvement</option>
+                            <option value="bug">Report a Bug</option>
+                            <option value="praise">Positive Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback-message">Your Feedback</label>
+                        <textarea id="feedback-message" rows="4"
+                            placeholder="Share your experience or suggestion..."></textarea>
+                    </div>
+                    <button type="button" class="submit-btn">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced response options for teachers
+        const responses = {
+            gradebook: "📊 Here's how to use the gradebook effectively:<br><br>1. Access the gradebook from the 'Grades' section in the sidebar<br>2. Use the tabs to view different views (By Student, By Assignment)<br>3. Set up grading categories and weights under 'Settings'<br>4. Enter grades directly or import from spreadsheets<br>5. Use the curve feature for adjustments<br><br>Pro tip: You can leave private notes on grades that only you can see by clicking the note icon next to any grade entry.",
+            course: "📚 To create a new course:<br><br>1. Go to 'Courses' in the sidebar<br>2. Click 'Create New Course' button<br>3. Fill out the course details (name, code, schedule, etc.)<br>4. Set up modules and initial content structure<br>5. Choose visibility settings and start date<br>6. Click 'Create Course'<br><br>You can also import content from previous courses by selecting 'Import from Existing Course' during setup.",
+            assignment: "📝 To create effective assignments:<br><br>1. Navigate to your course<br>2. Click on 'Assignments' tab<br>3. Select 'Create Assignment'<br>4. Fill in details (title, instructions, due date, points)<br>5. Set availability parameters and submission type<br>6. Add rubrics if desired<br>7. Choose whether to publish immediately or save as draft<br><br>Remember to enable plagiarism detection for written assignments if needed.",
+            feedback: "💬 Options for providing student feedback:<br><br>1. Text comments - directly on submissions or overall<br>2. Audio feedback - record up to 3-minute voice comments<br>3. Rubrics - use predefined criteria for consistent evaluation<br>4. Annotation - mark up documents, highlight specific areas<br>5. Video feedback - record short video explanations<br><br>Studies show students value specific, actionable feedback that addresses both strengths and areas for improvement.",
+            quiz: "✏️ Creating quizzes and exams:<br><br>1. Go to your course<br>2. Select 'Assessments'<br>3. Click 'Create Quiz/Exam'<br>4. Build your question bank (multiple choice, short answer, etc.)<br>5. Set time limits, attempt limits, and accessibility options<br>6. Configure security settings (proctoring, lockdown browser)<br>7. Set release conditions and grades integration<br><br>Your question bank is reusable across multiple courses and terms.",
+            attendance: "📋 Taking attendance efficiently:<br><br>1. Navigate to your course<br>2. Click the 'Attendance' tool<br>3. Select the correct date and session<br>4. Mark students present/absent/late with quick buttons<br>5. Use 'Quick Mark All Present' and adjust exceptions<br>6. Add optional comments for individual students<br>7. Save when complete<br><br>You can also enable student self-check-in with location verification or access codes.",
+            reports: "📈 Generating insightful reports:<br><br>1. Go to 'Reports' under the course menu<br>2. Select report type (engagement, performance, participation)<br>3. Choose parameters and date ranges<br>4. Select visualization options<br>5. Generate report<br>6. Export or share as needed<br><br>Custom reports can be scheduled for automatic delivery to your email on a weekly or monthly basis."
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Chat option buttons
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const key = btn.getAttribute('data-reply');
+                    const reply = responses[key];
+                    const container = document.getElementById('chat-response');
+                    container.innerHTML = `<div class='user-question'>👉 ${btn.textContent}</div><div class='bot-message'>${reply}</div>`;
+                });
+            });
+
+            // Custom question button
+            document.getElementById('sendCustom').addEventListener('click', () => {
+                const input = document.getElementById('customInput');
+                const text = input.value.trim();
+                const container = document.getElementById('chat-response');
+                if (text !== "") {
+                    container.innerHTML = `<div class='user-question'>👉 ${text}</div><div class='bot-message'>🤖 Thank you for your question! We'll provide a detailed response via email shortly. In the meantime, you might find helpful information in our FAQ section below.</div>`;
+                    input.value = "";
+                }
+            });
+
+            // FAQ accordion functionality
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    // Toggle active class
+                    button.classList.toggle('active');
+
+                    // Toggle answer visibility
+                    const answer = button.nextElementSibling;
+                    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+
+            // FAQ tabs functionality
+            document.querySelectorAll('.tab-btn').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+
+                    // Hide all FAQ containers
+                    document.querySelectorAll('.faq-container').forEach(container => {
+                        container.classList.add('hidden');
+                    });
+
+                    // Show the selected container
+                    const categoryId = tab.getAttribute('data-category');
+                    document.getElementById(categoryId).classList.remove('hidden');
+                });
+            });
+
+            // Mobile menu toggle with improved functionality
+            document.addEventListener('DOMContentLoaded', function () {
+                // Your existing code...
+
+                // Enhanced mobile menu toggle functionality
+                const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+                const sidebar = document.getElementById('sidebar');
+                const mainContent = document.querySelector('.help-content');
+
+                if (mobileMenuToggle) {
+                    mobileMenuToggle.addEventListener('click', () => {
+                        sidebar.classList.toggle('active');
+                    });
+
+                    // Close sidebar when clicking outside of it (on mobile)
+                    document.addEventListener('click', (e) => {
+                        if (window.innerWidth <= 768) {
+                            if (!sidebar.contains(e.target) && e.target !== mobileMenuToggle) {
+                                sidebar.classList.remove('active');
+                            }
+                        }
+                    });
+                }
+
+                // Adjust layout on window resize
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 768) {
+                        sidebar.classList.remove('active');
+                    }
+                });
+
+                // Your other event listeners...
+            });
+
+            // Submit feedback button (placeholder functionality)
+            const feedbackBtn = document.querySelector('.submit-btn');
+            if (feedbackBtn) {
+                feedbackBtn.addEventListener('click', () => {
+                    alert('Thank you for your feedback! Your input helps us improve our teaching tools.');
+                    document.getElementById('feedback-message').value = '';
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

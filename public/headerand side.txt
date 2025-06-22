@@ -1,0 +1,177 @@
+<!-- Sidebar and Header -->
+<header class="top-header">
+    <div class="logo">
+        <span>≡</span>
+        <span>EduConnect</span>
+    </div>
+    <div class="preview-mode">
+        <button class="btn btn-logout" id="logoutButton">Logout</button>
+    </div>
+</header>
+
+<div class="main-wrapper">
+    <nav class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="active">
+                <a href="#">
+                    <span class="sidebar-icon">🏠</span>
+                    <span class="sidebar-text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="teachercourses.html">
+                    <span class="sidebar-icon">📚</span>
+                    <span class="sidebar-text">Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="sidebar-icon">📊</span>
+                    <span class="sidebar-text">Grades</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="sidebar-icon">📅</span>
+                    <span class="sidebar-text">Schedule</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="sidebar-icon">📨</span>
+                    <span class="sidebar-text">Messages</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="sidebar-icon">👥</span>
+                    <span class="sidebar-text">Students</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="sidebar-icon">⚙️</span>
+                    <span class="sidebar-text">Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="sidebar-icon">❓</span>
+                    <span class="sidebar-text">Help</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+
+
+
+
+
+
+
+/* Header Styles */
+.top-header {
+    background-color: #FF7043; /* Orange color */
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.preview-mode {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 14px;
+}
+
+.btn-logout {
+    background-color: var(--primary-dark, #333);
+    color: var(--text-light, white);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.btn-logout:hover {
+    background-color: #D84315;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 240px;
+    background-color: #333;
+    color: white;
+    height: calc(100vh - 48px);
+    position: sticky;
+    top: 48px;
+    overflow-y: auto;
+    padding-top: 10px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin: 5px 0;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Removes underline */
+    color: white; /* Ensures text is white */
+    padding: 12px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-menu a:hover {
+    background-color: #444; /* Darker background on hover */
+    color: #FF7043; /* Orange text on hover */
+}
+
+.sidebar-menu li.active a {
+    background-color: #505050;
+    border-left: 4px solid #FF7043;
+    padding-left: 16px;
+}
+
+.sidebar-icon {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.sidebar-text {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Main Wrapper */
+.main-wrapper {
+    display: flex;
+    flex: 1;
+}

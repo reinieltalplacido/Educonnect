@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher - Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="teacher.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <style>
+    .spinner {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      border: 2px solid #ccc;
+      border-top: 2px solid #007bff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 0.5em;
+      vertical-align: middle;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    </style>
+</head>
+<body class="course-colors">
+    <header class="top-header">
+        <div class="header-left">
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="logo">
+                <span>EduConnect</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <nav class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a href="teacher.html">
+                        <span class="sidebar-icon">🏠</span>
+                        <span class="sidebar-text">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="teachercourses.html">
+                        <span class="sidebar-icon">📚</span>
+                        <span class="sidebar-text">Courses</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="teachergrades.html">
+                        <span class="sidebar-icon">📊</span>
+                        <span class="sidebar-text">Grades</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="teachercalendar.html">
+                        <span class="sidebar-icon">📅</span>
+                        <span class="sidebar-text">Calendar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="teacherchat.html">
+                        <span class="sidebar-icon">📨</span>
+                        <span class="sidebar-text">Messages</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="teacherhelp.html">
+                        <span class="sidebar-icon">❓</span>
+                        <span class="sidebar-text">Help</span>
+                    </a>
+                </li>
+                <!-- Account moved to bottom -->
+                <li>
+                    <a href="teacheraccount.html">
+                        <span class="sidebar-icon">👤</span>
+                        <span class="sidebar-text">Account</span>
+                    </a>
+                </li>
+            </ul>
+            <!-- Add this right after your sidebar -->
+<div class="sidebar-overlay"></div>
+        </nav>
+
+        <div class="content-area">
+            <div class="welcome-card">
+                <div class="welcome-content">
+                    <h1 class="welcome-title" id="welcomeNameWrapper">
+                        <span id="welcomeSpinner" style="display:inline-block;">
+                            <span class="spinner"></span> Loading...
+                        </span>
+                        <span id="welcomeName" style="display:none;"></span>
+                    </h1>
+                    <p class="welcome-message">Happy Thursday! Ready to organize your week?</p>
+                    <p id="courseCountText" class="welcome-courses"></p>
+                </div>
+                
+                <div class="welcome-stats">
+                    <div class="stat-box courses">
+                        <div class="stat-number" id="activeCourseCount">
+                            <span class="spinner"></span>
+                        </div>
+                        <div class="stat-label">Active Courses</div>
+                    </div>
+                    <div class="stat-box date-time">
+                        <div id="currentTime">Loading...</div>
+                        <div id="currentDate">Loading...</div>
+                    </div>
+                </div>
+            
+                <div id="avatarInitials" class="avatar-initials"></div>
+            </div>
+            <h2 class="section-header">My Courses</h2>
+            <div class="course-grid" id="courseGrid">
+                <div id="coursesSpinner" style="text-align:center; padding:2em;">
+                    <span class="spinner"></span> Loading courses...
+                </div>
+                <!-- Courses will be rendered here by JS -->
+            </div>
+
+            <h2 class="section-header">Upcoming Activities</h2>
+            <!-- Replace the upcoming-section div with this updated version -->
+            <div class="upcoming-section">
+                <div class="upcoming-header">
+                    <h2 class="upcoming-title">This Week</h2>
+                    <button class="view-calendar" id="viewCalendarBtn">View Calendar</button>
+                </div>
+                <div class="upcoming-list" id="upcomingActivitiesList">
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <span>Loading activities...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="teacher.js"></script>
+</body>
+</html>

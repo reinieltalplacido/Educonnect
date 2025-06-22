@@ -1,0 +1,799 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher - Grades</title>
+    <link rel="stylesheet" href="teachergrades.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+</head>
+<body>
+    <header class="top-header">
+        <div class="logo">
+            <span>EduConnect</span>
+        </div>
+    </header>
+    
+    <!-- Sidebar HTML -->
+    <nav class="sidebar">
+        <ul class="sidebar-menu">
+            <li>                                                                          
+                <a href="teacher.html">
+                    <span class="sidebar-icon">🏠</span>
+                    <span class="sidebar-text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="teachercourses.html">
+                    <span class="sidebar-icon">📚</span>
+                    <span class="sidebar-text">Courses</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="teachergrades.html">
+                    <span class="sidebar-icon">📊</span>
+                    <span class="sidebar-text">Grades</span>
+                </a>
+            </li>
+            <li>
+                <a href="teachercalendar.html">
+                    <span class="sidebar-icon">📅</span>
+                    <span class="sidebar-text">Calendar</span>
+                </a>
+            </li>
+            <li>
+                <a href="teacherchat.html">
+                    <span class="sidebar-icon">📨</span>
+                    <span class="sidebar-text">Messages</span>
+                </a>
+            </li>
+            <li>
+                <a href="teacherhelp.html">
+                    <span class="sidebar-icon">❓</span>
+                    <span class="sidebar-text">Help</span>
+                </a>
+            </li>
+            <!-- Account moved to bottom -->
+            <li>
+                <a href="teacheraccount.html">
+                    <span class="sidebar-icon">👤</span>
+                    <span class="sidebar-text">Account</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+        
+    <div class="content-area">
+        <div class="content-header">
+            <h1 class="content-title">Grades Management</h1>
+            <div class="action-buttons">
+                <button class="btn btn-secondary">Export Grades</button>
+                <button class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+
+        <!-- Selection Controls -->
+        <div class="selection-controls">
+            <div class="control-row">
+                <span class="control-label">Academic Year:</span>
+                <select class="control-select">
+                    <option>2024-2025 (Current)</option>
+                    <option>2023-2024</option>
+                    <option>2022-2023</option>
+                </select>
+            </div>
+            <div class="control-row">
+                <label for="course-select" class="control-label">Course:</label>
+                <select id="course-select" class="control-select">
+                    <option>BACHELOR SCIENCE OF INFORMATION AND TECHNOLOGY</option>
+                </select>
+            </div>
+            <div class="control-row">
+                <label for="section-select" class="control-label">Section:</label>
+                <select id="section-select" class="control-select">
+                    <option>BSIT-2C</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Grading System Info -->
+        <div class="selection-controls" style="margin-bottom: 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0;">Philippine College Grading System</h3>
+                <button class="btn btn-secondary" style="font-size: 12px;" onclick="toggleGradingInfo()">Show/Hide
+                    Details</button>
+            </div>
+            <div id="grading-info" style="display: none; margin-top: 10px;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Percentage</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Grade</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Letter Equivalent
+                            </th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">96-100</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1.0</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">A</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Excellent</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">91-95</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1.5</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">A-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Very Good</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">86-90</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">2.0</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">B+</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Good</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">81-85</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">2.5</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">B</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Satisfactory</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">76-80</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">3.0</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">C</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Passing</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">70-75</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">4.0</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">D</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Conditional Pass
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Below 70</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">5.0</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">F</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Failing</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Semester Tabs -->
+        <div class="semester-tabs">
+            <div class="semester-tab active">1st Semester Midterms</div>
+            <div class="semester-tab">1st Semester Finals</div>
+            <div class="semester-tab">2nd Semester Midterms</div>
+            <div class="semester-tab">2nd Semester Finals</div>
+            <div class="semester-tab">Final Grades</div>
+        </div>
+
+        <!-- Grades Container -->
+        <div class="grades-container">
+            <div class="filter-row">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search by student name...">
+                </div>
+            </div>
+
+            <table class="grades-table">
+                <thead>
+                    <tr>
+                        <th style="width: 220px;">Student</th>
+                        <th colspan="3">Quizzes (30%)</th>
+                        <th colspan="2">Lab Reports (20%)</th>
+                        <th>Midterm (25%)</th>
+                        <th>Final (25%)</th>
+                        <th>Overall</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>Quiz 1 <span class="max-score">Max: 50</span></th>
+                        <th>Quiz 2 <span class="max-score">Max: 50</span></th>
+                        <th>Quiz 3 <span class="max-score">Max: 50</span></th>
+                        <th>Lab 1 <span class="max-score">Max: 50</span></th>
+                        <th>Lab 2 <span class="max-score">Max: 50</span></th>
+                        <th>Exam <span class="max-score">Max: 100</span></th>
+                        <th>Project <span class="max-score">Max: 100</span></th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+
+
+                <!-- 1st Sem Midterms -->
+                <tbody id="first-semester-midterms">
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">JA</div>
+                                Jerome Antonio
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="45">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="43">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="46">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="95">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="94">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">GO</div>
+                                Godwin Oanes
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="41">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="39">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="42">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="43">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="78">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="82">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">JS</div>
+                                Justine Carl Santos
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="48">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="48">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="46">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="91">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="96">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">RT</div>
+                                Reiniel Anjelo Talplacido
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="39">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="40">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="38">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="41">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="39">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="85">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="81">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">MT</div>
+                                Mark Lennard Torres
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="45">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="46">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="45">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="93">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="88">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                </tbody>
+
+                <!-- 1st Sem final -->
+                <tbody id="first-semester-finals">
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">JA</div>
+                                Jerome Antonio
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="45">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="43">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="46">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="95">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="94">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">GO</div>
+                                Godwin Oanes
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="40">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="48">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="27">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="89">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="90">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">JS</div>
+                                Justine Carl Santos
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="27">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="40">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="40">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="95">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="96">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">RT</div>
+                                Reiniel Anjelo Talplacido
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="45">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="30">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="48">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="27">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="95">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="86">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">MT</div>
+                                Mark Lennard Torres
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="49">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="48">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="40">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="43">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="48">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="96">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="98">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                </tbody>
+
+                <!-- 2nd sem midterms -->
+                <tbody id="second-semester-midterms">
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">JA</div>
+                                Jerome Antonio
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="45">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="43">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="46">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="95">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="94">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">GO</div>
+                                Godwin Oanes
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="41">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="39">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="42">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="43">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="78">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="82">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">JS</div>
+                                Justine Carl Santos
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="48">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="48">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="46">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="91">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="96">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">RT</div>
+                                Reiniel Anjelo Talplacido
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="39">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="40">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="38">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="41">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="39">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="85">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="81">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">MT</div>
+                                Mark Lennard Torres
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="45">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="46">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="45">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="93">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="88">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                </tbody>
+
+                <!-- 2nd sem final -->
+                <tbody id="second-semester-finals" style="display: none;">
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">JA</div>
+                                Jerome Antonio
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="45">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="43">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="46">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="95">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="94">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">GO</div>
+                                Godwin Oanes
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="41">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="39">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="42">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="43">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="78">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="82">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">JS</div>
+                                Justine Carl Santos
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="48">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="48">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="47">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="46">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="91">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="96">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">RT</div>
+                                Reiniel Anjelo Talplacido
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="39">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="40">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="38">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="41">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="39">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="85">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="81">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="student-name">
+                                <div class="student-avatar">MT</div>
+                                Mark Lennard Torres
+                            </div>
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="45">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="46">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="45">
+                        </td>
+                        <td class="score-cell" data-max="/50"><input type="text" class="grade-input" value="44">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="93">
+                        </td>
+                        <td class="score-cell" data-max="/100"><input type="text" class="grade-input" value="88">
+                        </td>
+                        <td class="overall-grade"></td>
+                    </tr>
+                </tbody>
+
+                <!-- Final grades table remains the same -->
+                <thead id="final-grades-header" style="display: none;">
+                    <tr>
+                        <th style="width: 220px;">Student</th>
+                        <th>1st Semester Midterms</th>
+                        <th>1st Semester Finals</th>
+                        <th>2nd Semester Midterms</th>
+                        <th>2nd Semester Finals</th>
+                        <th colspan="3">Final Grade</th>
+                    </tr>
+                </thead>
+                <tbody id="final-grades" style="display: none;">
+                    <!-- This content will be generated dynamically by the JavaScript -->
+                </tbody>
+
+                <!-- Add this HTML code AFTER the final grades table -->
+                <div id="print-grades-container" class="print-btn-container"
+                    style="text-align: right; margin: 20px 0; display: none;">
+                    <button id="print-grades-btn" class="btn btn-info">
+                        <i class="fas fa-print"></i> Print Grades
+                    </button>
+                </div>
+
+            </table>
+
+            <!-- Class Statistics -->
+            <div class="statistics-container">
+                <h3>Class Statistics</h3>
+                <div class="statistics-grid">
+                    <div class="statistic-card">
+                        <div class="statistic-title">Class Average</div>
+                        <div class="statistic-value">86.5%</div>
+                        <div class="statistic-description">Grade: 2.0 (Good)</div>
+                    </div>
+                    <div class="statistic-card">
+                        <div class="statistic-title">Highest Score</div>
+                        <div class="statistic-value">94.0%</div>
+                        <div class="statistic-description">Sophia Rodriguez</div>
+                    </div>
+                    <div class="statistic-card">
+                        <div class="statistic-title">Lowest Score</div>
+                        <div class="statistic-value">69.0%</div>
+                        <div class="statistic-description">James Wilson</div>
+                    </div>
+                    <div class="statistic-card">
+                        <div class="statistic-title">At Risk Students</div>
+                        <div class="statistic-value">1</div>
+                        <div class="statistic-description">Below passing grade</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Grade Category Modal (hidden by default) -->
+            <div id="addCategoryModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="modal-close">&times;</span>
+                    <h3>Add Grade Category</h3>
+                    <form id="categoryForm">
+                        <div class="form-group">
+                            <label for="categoryName">Category Name:</label>
+                            <input type="text" id="categoryName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryWeight">Weight (%):</label>
+                            <input type="number" id="categoryWeight" min="1" max="100" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryItems">Number of Items:</label>
+                            <input type="number" id="categoryItems" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="maxScore">Maximum Score per Item:</label>
+                            <input type="number" id="maxScore" min="1" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Category</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleGradingInfo() {
+            const infoDiv = document.getElementById('grading-info');
+            if (infoDiv.style.display === 'none') {
+                infoDiv.style.display = 'block';
+            } else {
+                infoDiv.style.display = 'none';
+            }
+        }
+
+        document.querySelectorAll('.semester-tab').forEach((tab, index) => {
+            tab.addEventListener('click', function () {
+                // Get table headers
+                const regularHeader = document.querySelector('.grades-table thead:not(#final-grades-header)');
+                const finalGradesHeader = document.getElementById('final-grades-header');
+
+                // Hide both headers by default
+                regularHeader.style.display = 'none';
+                finalGradesHeader.style.display = 'none';
+
+                // Show appropriate header based on tab
+                if (index === 4) { // Final Grades tab
+                    finalGradesHeader.style.display = '';
+                } else {
+                    regularHeader.style.display = '';
+                }
+            });
+        });
+
+    </script>
+    <script src="teachergrade.js"></script>
+</body>
+
+</html>

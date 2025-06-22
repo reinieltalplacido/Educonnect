@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student - Courses</title>
+    <link rel="stylesheet" href="studentcourse.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    
+</head>
+<body>
+    <header class="top-header">
+        <div class="logo">
+            <span>EduConnect</span>
+        </div>
+    </header>
+    
+    <!-- Sidebar HTML -->
+    <nav class="sidebar">
+        <ul class="sidebar-menu">
+            <li >
+                <a href="students.html">
+                    <span class="sidebar-icon">🏠</span>
+                    <span class="sidebar-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="studentcourse.html">
+                    <span class="sidebar-icon">📚</span>
+                    <span class="sidebar-text">Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="studentgrades.html">
+                    <span class="sidebar-icon">📊</span>
+                    <span class="sidebar-text">Grades</span>
+                </a>
+            </li>
+            <li>
+                <a href="studentcalendar.html">
+                    <span class="sidebar-icon">📅</span>
+                    <span class="sidebar-text">Calendar</span>
+                </a>
+            </li>
+            <li>
+                <a href="studentchat.html">
+                    <span class="sidebar-icon">📨</span>
+                    <span class="sidebar-text">Messages</span>
+                </a>
+            </li>
+            <li>
+                <a href="studenthelp.html">
+                    <span class="sidebar-icon">❓</span>
+                    <span class="sidebar-text">Help</span>
+                </a>
+            </li>
+            <!-- Account moved to bottom -->
+            <li>
+                <a href="studentaccount.html">
+                    <span class="sidebar-icon">👤</span>
+                    <span class="sidebar-text">Account</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>My Courses</h1>
+        
+        
+        
+        <!-- Student Courses Container -->
+        <div id="studentCourseGrid">
+            <!-- Loading spinner will be inserted here by JS -->
+        </div>
+        
+        <!-- Course Grid - Initially Hidden -->
+        <div class="course-grid" id="courseGrid" style="display: none;">
+            <!-- Course cards will be rendered here -->
+        </div>
+
+        <div id="courseDetails" class="course-details" style="display: none;">
+            <button onclick="goBackToCourses()" class="btn-back">&larr; Back</button>
+        
+            <div class="details-container">
+                <!-- Sidebar -->
+                <div class="sidebar-menu">
+                    <button class="sidebar-menu-btn" data-tab="announcementsTab" onclick="showCourseTab('announcementsTab')">Announcements</button>
+                    <button class="sidebar-menu-btn" data-tab="lessonsTab" onclick="showCourseTab('lessonsTab')">Lessons</button>
+                    <button class="sidebar-menu-btn" data-tab="assignmentsTab" onclick="showCourseTab('assignmentsTab')">Assignments</button>
+                    <button class="sidebar-menu-btn" data-tab="quizTab" onclick="showCourseTab('quizTab')">Quiz</button>
+                    
+                </div>
+        
+                <!-- Tab Content Area -->
+                <div class="tab-content-area">
+        
+                    <!-- Announcements Tab -->
+                    <div id="announcementsTab" class="course-tab" style="display: none;">
+                        <h2>Announcements</h2>
+                        <p>Announcements will be shown here...</p>
+                    </div>
+        
+                    <!-- Lessons Tab -->
+                    
+                    <div id="lessonsTab" class="course-tab" style="display: none;">
+                        <!-- The heading will be dynamically added by the fetchLessons function -->
+                        <!-- Lessons will be dynamically added here -->
+                    </div>
+                  
+
+
+                      
+        
+                    <!-- Assignments Tab -->
+                    <div id="assignmentsTab" class="course-tab" style="display: none;">
+                        <h2>Assignments</h2>
+                        <p>Assignments will be shown here...</p>
+                    </div>
+        
+                    <!-- Quiz Tab -->
+                    <div id="quizTab" class="course-tab" style="display: none;">
+                        
+                        <p>Quiz content will be added here...</p>
+                    </div>
+        
+                    <!-- Students Tab -->
+                    <div id="studentsTab" class="course-tab" style="display: none;">
+                        <h2>Students</h2>
+        
+                        <div id="studentsContainer">
+                            <!-- Students Table -->
+                            <table id="studentsTable" class="students-table" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentsListBody">
+                                    <!-- Student rows will be injected here dynamically -->
+                                </tbody>
+                            </table>
+        
+                            <!-- Fallback Message -->
+                            <p id="noStudentsMsg" style="text-align: center; color: #FF7043; display: none;">
+                                No students have been added yet.
+                            </p>
+                        </div>
+                    </div>
+        
+                </div> <!-- End tab-content-area -->
+            </div> <!-- End details-container -->
+        </div>
+    </div>
+</div>
+
+    <script type="module" src="studentcourse.js"></script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student - Help</title>
+    <link rel="stylesheet" href="studenthelp.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+</head>
+<body>
+    <header class="top-header">
+        <div class="logo">
+            <span>EduConnect</span>
+        </div>
+    </header>
+    
+    <!-- Sidebar HTML -->
+    <nav class="sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="students.html">
+                    <span class="sidebar-icon">🏠</span>
+                    <span class="sidebar-text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="studentcourse.html">
+                    <span class="sidebar-icon">📚</span>
+                    <span class="sidebar-text">Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="studentgrades.html">
+                    <span class="sidebar-icon">📊</span>
+                    <span class="sidebar-text">Grades</span>
+                </a>
+            </li>
+            <li>
+                <a href="studentcalendar.html">
+                    <span class="sidebar-icon">📅</span>
+                    <span class="sidebar-text">Calendar</span>
+                </a>
+            </li>
+            <li>
+                <a href="studentchat.html">
+                    <span class="sidebar-icon">📨</span>
+                    <span class="sidebar-text">Messages</span>
+                </a>
+            </li>
+            <li  class="active">
+                <a href="studenthelp.html">
+                    <span class="sidebar-icon">❓</span>
+                    <span class="sidebar-text">Help</span>
+                </a>
+            </li>
+            <!-- Account moved to bottom -->
+            <li>
+                <a href="studentaccount.html">
+                    <span class="sidebar-icon">👤</span>
+                    <span class="sidebar-text">Account</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+        <div class="help-content">
+            <div class="help-header">
+                <h1>Help Center</h1>
+                <p>Find answers to common questions and get assistance with EduConnect</p>
+            </div>
+
+            <!-- Chat Assistant - Enhanced -->
+            <div class="chat-box">
+                <div class="chat-header">
+                    <div class="assistant-avatar">🤖</div>
+                    <div class="assistant-info">
+                        <h3>EduBot Assistant</h3>
+                        <p>Available 24/7 for your questions</p>
+                    </div>
+                </div>
+                
+                <div class="bot-message">👋 Hi there! I'm your Help Assistant. How can I help you today?</div>
+                
+                <div class="options">
+                    <button class="option-btn" data-reply="grades">
+                        <span class="option-icon">📊</span>
+                        <span>I can't access my grades</span>
+                    </button>
+                    <button class="option-btn" data-reply="password">
+                        <span class="option-icon">🔐</span>
+                        <span>I forgot my password</span>
+                    </button>
+                    <button class="option-btn" data-reply="enroll">
+                        <span class="option-icon">📚</span>
+                        <span>How to enroll in a course</span>
+                    </button>
+                    <button class="option-btn" data-reply="contact">
+                        <span class="option-icon">👩‍🏫</span>
+                        <span>How to contact my teacher</span>
+                    </button>
+                    <button class="option-btn" data-reply="bug">
+                        <span class="option-icon">🐞</span>
+                        <span>I found a bug / error</span>
+                    </button>
+                    <button class="option-btn" data-reply="assignments">
+                        <span class="option-icon">📝</span>
+                        <span>Submitting assignments</span>
+                    </button>
+                    <button class="option-btn" data-reply="notifications">
+                        <span class="option-icon">🔔</span>
+                        <span>Setting up notifications</span>
+                    </button>
+                </div>
+                
+                <div class="chat-response" id="chat-response"></div>
+                
+                <div class="custom-question">
+                    <label for="customInput">Still have a question?</label>
+                    <input type="text" id="customInput" placeholder="Type your question here..." />
+                    <button id="sendCustom">Send</button>
+                </div>
+            </div>
+
+            <!-- FAQ Section - Enhanced -->
+            <div class="faq-section">
+                <h2>📘 Frequently Asked Questions</h2>
+                
+                <div class="faq-tabs">
+                    <button class="tab-btn active" data-category="general">General</button>
+                    <button class="tab-btn" data-category="account">Account</button>
+                    <button class="tab-btn" data-category="courses">Courses</button>
+                    <button class="tab-btn" data-category="technical">Technical</button>
+                </div>
+                
+                <div class="faq-container" id="general">
+                    <div class="faq-item">
+                        <button class="faq-question">How do I reset my email address?</button>
+                        <div class="faq-answer">
+                            <p>To update your email address:</p>
+                            <ol>
+                                <li>Navigate to the 'Account' section in the sidebar</li>
+                                <li>Click on 'Edit Profile'</li>
+                                <li>Update your email address in the form</li>
+                                <li>Click 'Save Changes'</li>
+                                <li>Verify your new email by clicking the link sent to your inbox</li>
+                            </ol>
+                            <p>Note: You'll need to verify your new email before the change takes effect.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Can I message my classmates?</button>
+                        <div class="faq-answer">
+                            <p>Yes! You can connect with classmates through the Chat feature:</p>
+                            <ul>
+                                <li>Access the 'Chat' section from the sidebar</li>
+                                <li>Search for classmates by name or browse course groups</li>
+                                <li>Start a direct message or join a course discussion group</li>
+                            </ul>
+                            <p>All students enrolled in the same course can be found in the course chat group.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Why can't I see my new course?</button>
+                        <div class="faq-answer">
+                            <p>If your newly enrolled course isn't appearing:</p>
+                            <ul>
+                                <li>Try refreshing the page (press F5 or the refresh button)</li>
+                                <li>Log out and log back in to reset your session</li>
+                                <li>Check if the course start date has arrived</li>
+                                <li>Verify your enrollment status under 'Account' → 'My Enrollments'</li>
+                            </ul>
+                            <p>If the course still doesn't appear, contact your instructor or support team at support@educonnect.com.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How do I track my academic progress?</button>
+                        <div class="faq-answer">
+                            <p>EduConnect offers multiple ways to monitor your progress:</p>
+                            <ul>
+                                <li>View your overall GPA in the Dashboard</li>
+                                <li>Check detailed course grades in the 'Grades' section</li>
+                                <li>Review assignment progress in each course page</li>
+                                <li>Download progress reports from the 'Grades' section</li>
+                            </ul>
+                            <p>You can also enable weekly progress email notifications in your account settings.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-container hidden" id="account">
+                    <div class="faq-item">
+                        <button class="faq-question">How do I change my password?</button>
+                        <div class="faq-answer">
+                            <p>To change your password:</p>
+                            <ol>
+                                <li>Go to 'Account' in the sidebar</li>
+                                <li>Select 'Security Settings'</li>
+                                <li>Click 'Change Password'</li>
+                                <li>Enter your current password and your new password twice</li>
+                                <li>Click 'Update Password'</li>
+                            </ol>
+                            <p>For security reasons, you'll be logged out and need to log in with your new password.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How do I update my profile picture?</button>
+                        <div class="faq-answer">
+                            <p>To change your profile picture:</p>
+                            <ol>
+                                <li>Navigate to 'Account'</li>
+                                <li>Click on 'Edit Profile'</li>
+                                <li>Click on the profile picture icon or current photo</li>
+                                <li>Select 'Upload New Photo'</li>
+                                <li>Choose an image (JPG, PNG, max 5MB)</li>
+                                <li>Crop if needed, then click 'Save'</li>
+                            </ol>
+                            <p>Your profile picture will be visible to instructors and classmates.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-container hidden" id="courses">
+                    <div class="faq-item">
+                        <button class="faq-question">How do I upload assignments?</button>
+                        <div class="faq-answer">
+                            <p>To upload an assignment:</p>
+                            <ol>
+                                <li>Go to 'Courses' and select your course</li>
+                                <li>Navigate to the 'Assignments' tab</li>
+                                <li>Find the assignment and click 'Submit'</li>
+                                <li>Click 'Upload Files' or drag files to the upload area</li>
+                                <li>Select your file(s) (supported formats: PDF, DOCX, XLSX, PPTX, ZIP, max 50MB)</li>
+                                <li>Add any comments for your instructor (optional)</li>
+                                <li>Click 'Submit Assignment'</li>
+                            </ol>
+                            <p>You'll receive a confirmation email once your submission is complete.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Can I withdraw from a course?</button>
+                        <div class="faq-answer">
+                            <p>Yes, you can withdraw from a course before the withdrawal deadline:</p>
+                            <ol>
+                                <li>Go to 'Courses' in the sidebar</li>
+                                <li>Find the course you want to withdraw from</li>
+                                <li>Click the three-dot menu and select 'Course Options'</li>
+                                <li>Choose 'Withdraw from Course'</li>
+                                <li>Confirm your decision</li>
+                            </ol>
+                            <p><strong>Important:</strong> Check your institution's withdrawal policies for deadlines and potential academic/financial impacts.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-container hidden" id="technical">
+                    <div class="faq-item">
+                        <button class="faq-question">What are system requirements?</button>
+                        <div class="faq-answer">
+                            <p><strong>For optimal performance, we recommend:</strong></p>
+                            <ul>
+                                <li><strong>Browsers:</strong> Chrome 89+, Firefox 86+, Safari 14+, Edge 89+</li>
+                                <li><strong>Operating Systems:</strong> Windows 10/11, macOS 10.14+, Chrome OS, Ubuntu 18.04+</li>
+                                <li><strong>Mobile:</strong> iOS 13+ or Android 10+</li>
+                                <li><strong>Internet:</strong> Broadband connection (1+ Mbps)</li>
+                                <li><strong>Storage:</strong> At least 1GB free space for downloaded materials</li>
+                                <li><strong>Additional:</strong> JavaScript enabled, cookies allowed</li>
+                            </ul>
+                            <p>For virtual classrooms and video content, we recommend using a desktop or laptop computer.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How do I clear the browser cache?</button>
+                        <div class="faq-answer">
+                            <p>If you're experiencing technical issues, clearing your browser cache often helps:</p>
+                            
+                            <p><strong>Chrome:</strong></p>
+                            <ol>
+                                <li>Click the three dots in the top-right corner</li>
+                                <li>Select 'More tools' → 'Clear browsing data'</li>
+                                <li>Select 'Cached images and files'</li>
+                                <li>Click 'Clear data'</li>
+                            </ol>
+                            
+                            <p><strong>Firefox:</strong></p>
+                            <ol>
+                                <li>Click the menu button (three lines) in the top-right</li>
+                                <li>Select 'Settings' → 'Privacy & Security'</li>
+                                <li>In 'Cookies and Site Data', click 'Clear Data'</li>
+                                <li>Select 'Cached Web Content' and click 'Clear'</li>
+                            </ol>
+                            
+                            <p>After clearing cache, refresh the page and try again.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Troubleshooting Section - New -->
+            <div class="troubleshoot-section">
+                <h2>🔧 Common Troubleshooting</h2>
+                <div class="troubleshoot-grid">
+                    <div class="troubleshoot-item">
+                        <h3>Page Won't Load</h3>
+                        <div class="solution">
+                            <ol>
+                                <li>Check your internet connection</li>
+                                <li>Clear browser cache and cookies</li>
+                                <li>Try a different browser</li>
+                                <li>Disable browser extensions</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="troubleshoot-item">
+                        <h3>Can't Upload Files</h3>
+                        <div class="solution">
+                            <ol>
+                                <li>Ensure file is under size limit (50MB)</li>
+                                <li>Check file format is supported</li>
+                                <li>Try renaming file (avoid special characters)</li>
+                                <li>Use Chrome or Firefox for uploads</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="troubleshoot-item">
+                        <h3>Video Playback Issues</h3>
+                        <div class="solution">
+                            <ol>
+                                <li>Update your browser to latest version</li>
+                                <li>Check internet speed (min 1Mbps)</li>
+                                <li>Lower video quality in settings</li>
+                                <li>Try watching during off-peak hours</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="troubleshoot-item">
+                        <h3>Login Problems</h3>
+                        <div class="solution">
+                            <ol>
+                                <li>Reset password via "Forgot Password"</li>
+                                <li>Check Caps Lock is off</li>
+                                <li>Clear browser cookies</li>
+                                <li>Contact support if account is locked</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Card - Enhanced -->
+            <div class="contact-card">
+                <h2>📞 Need More Help?</h2>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <span class="contact-icon">💬</span>
+                        <h3>Live Chat</h3>
+                        <p>Available Monday–Friday, 9AM–6PM</p>
+                        <button class="contact-btn">Start Chat</button>
+                    </div>
+                    <div class="contact-method">
+                        <span class="contact-icon">📧</span>
+                        <h3>Email Support</h3>
+                        <p>Response within 24 hours</p>
+                        <a href="mailto:support@educonnect.com" class="contact-btn">support@educonnect.com</a>
+                    </div>
+                    <div class="contact-method">
+                        <span class="contact-icon">📱</span>
+                        <h3>Phone Support</h3>
+                        <p>Mon-Fri: 8AM-8PM</p>
+                        <a href="tel:18003384357" class="contact-btn">1-800-EDU-HELP</a>
+                    </div>
+                </div>
+                <div class="support-hours">
+                    <p><strong>Technical Support Hours:</strong> Monday–Friday, 8AM–8PM | Saturday, 10AM–4PM | Closed Sunday</p>
+                </div>
+            </div>
+
+            <!-- Feedback Section - New -->
+            <div class="feedback-section">
+                <h2>💭 Help Us Improve</h2>
+                <p>Share your feedback about the help center or suggest new topics</p>
+                <form class="feedback-form">
+                    <div class="form-group">
+                        <label for="feedback-topic">What's this about?</label>
+                        <select id="feedback-topic">
+                            <option value="suggestion">Suggestion for Improvement</option>
+                            <option value="missing">Missing Information</option>
+                            <option value="confusing">Confusing Content</option>
+                            <option value="praise">Positive Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback-message">Your Feedback</label>
+                        <textarea id="feedback-message" rows="4" placeholder="Tell us your thoughts..."></textarea>
+                    </div>
+                    <button type="button" class="submit-btn">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="studenthelp.js"></script>
+</body>
+</html>

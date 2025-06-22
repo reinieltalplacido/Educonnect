@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="teachercourses.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <title>Teacher - Courses</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <div id="coursesSpinner" class="fullscreen-center-spinner">
+        <span class="spinner"></span>
+        <div style="margin-top:1em; font-size:1.2em; color:#333;">Loading courses...</div>
+    </div>
+
+    <header class="top-header">
+      <div class="logo">
+          <span>EduConnect</span>
+      </div>
+  </header>
+  
+  <!-- Sidebar HTML -->
+  <nav class="sidebar">
+    <ul class="sidebar-menu">
+        <li>
+            <a href="teacher.html">
+                <span class="sidebar-icon">🏠</span>
+                <span class="sidebar-text">Dashboard</span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="teachercourses.html">
+                <span class="sidebar-icon">📚</span>
+                <span class="sidebar-text">Courses</span>
+            </a>
+        </li>
+        <li>
+            <a href="teachergrades.html">
+                <span class="sidebar-icon">📊</span>
+                <span class="sidebar-text">Grades</span>
+            </a>
+        </li>
+        <li>
+            <a href="teachercalendar.html">
+                <span class="sidebar-icon">📅</span>
+                <span class="sidebar-text">Calendar</span>
+            </a>
+        </li>
+        <li>
+            <a href="teacherchat.html">
+                <span class="sidebar-icon">📨</span>
+                <span class="sidebar-text">Messages</span>
+            </a>
+        </li>
+        <li>
+            <a href="teacherhelp.html">
+                <span class="sidebar-icon">❓</span>
+                <span class="sidebar-text">Help</span>
+            </a>
+        </li>
+        <!-- Account moved to bottom -->
+        <li>
+            <a href="teacheraccount.html">
+                <span class="sidebar-icon">👤</span>
+                <span class="sidebar-text">Account</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+    <div class="content-area">
+        <div class="page-header">
+            <h1 class="page-title" id="pageTitle">Courses Management</h1>
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="newCourseBtn" onclick="openAddCourseModal()">Create Course</button>
+
+            </div>
+        </div>
+    
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('courses')">Courses</button>
+            <button class="tab-button" onclick="showTab('manageCourses')">Manage Courses</button>
+        </div>
+    
+        <div class="tab-content" id="courses">
+            <div class="courses-grid" id="coursesGrid">
+                
+                <!-- Course cards will be rendered here by JS -->
+            </div>
+        </div>
+    
+        <div class="tab-content" id="manageCourses" style="display: none;">
+            <div class="manage-courses-list"></div>
+        </div>
+    
+        <div id="courseDetails" class="course-details" style="display: none;">
+            <button onclick="goBackToCourses()" class="btn-back">&larr; Back</button>
+        
+            <div class="details-container">
+                <!-- Sidebar -->
+                <div class="sidebar-menu">
+                    <button onclick="showCourseTab('announcementsTab')">Announcements</button>
+                    <button onclick="showCourseTab('lessonsTab')">Lessons</button>
+                    <button onclick="showCourseTab('assignmentsTab')">Assignments</button>
+                    <button onclick="showCourseTab('quizTab')">Quiz</button>
+                    <button onclick="showCourseTab('studentsTab')">Students</button>
+                </div>
+        
+                <!-- Tab Content Area -->
+                <div class="tab-content-area">
+        
+                    <!-- Announcements Tab -->
+                    <div id="announcementsTab" class="course-tab" style="display: none;">
+                        <h2>Announcements</h2>
+                        <p>Announcements will be shown here...</p>
+                    </div>
+        
+                    <!-- Lessons Tab -->
+                    <div id="lessonsTab" class="course-tab" style="display: none;">
+                        <h2>Lessons</h2>
+                        <p>Lessons will be listed here...</p>
+                    </div>
+        
+                    <!-- Assignments Tab -->
+                    <div id="assignmentsTab" class="course-tab" style="display: none;">
+                        <h2>Assignments</h2>
+                        <p>Assignments will be shown here...</p>
+                    </div>
+        
+                    <!-- Quiz Tab -->
+                    <div id="quizTab" class="course-tab" style="display: none;">
+                        <h2>Quiz</h2>
+                        <p>Quiz content will be added here...</p>
+                    </div>
+        
+                    <!-- Students Tab -->
+                    <div id="studentsTab" class="course-tab" style="display: none;">
+                        <h2>Students</h2>
+        
+                        <div id="studentsContainer">
+                            <!-- Students Table -->
+                            <table id="studentsTable" class="students-table" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentsListBody">
+                                    <!-- Student rows will be injected here dynamically -->
+                                </tbody>
+                            </table>
+        
+                            <!-- Fallback Message -->
+                            <p id="noStudentsMsg" style="text-align: center; color: #FF7043; display: none;">
+                                No students have been added yet.
+                            </p>
+                        </div>
+                    </div>
+        
+                </div> <!-- End tab-content-area -->
+            </div> <!-- End details-container -->
+        </div>
+        
+    
+
+        <div id="assignmentModal" class="assignment-modal">
+          <div class="assignment-modal-content">
+              <div class="assignment-modal-header">
+                  <h2>Create New Assignment</h2>
+                  <span class="assignment-close">&times;</span>
+              </div>
+              <form id="assignmentForm">
+                  <div class="assignment-form-group">
+                      <label for="assignmentTitle">Title*</label>
+                      <input type="text" id="assignmentTitle" placeholder="Enter assignment title" required>
+                  </div>
+                  <div class="assignment-form-group">
+                      <label for="assignmentDescription">Description</label>
+                      <textarea id="assignmentDescription" rows="4" placeholder="Describe the assignment task and requirements"></textarea>
+                  </div>
+                  <div class="assignment-form-group">
+                      <label for="assignmentDueDate">Due Date*</label>
+                      <input type="datetime-local" id="assignmentDueDate" required>
+                  </div>
+                  <div class="assignment-form-group">
+                      <label for="assignmentPoints">Points*</label>
+                      <input type="number" id="assignmentPoints" min="0" value="100" placeholder="Maximum points for this assignment">
+                  </div>
+                  <div class="assignment-form-group">
+                      <label>Submission Type*</label>
+                      <div class="submission-type-options">
+                          <label class="radio-label">
+                              <input type="radio" name="submissionType" value="text" checked> Text Entry
+                          </label>
+                          <label class="radio-label">
+                              <input type="radio" name="submissionType" value="file"> File Upload
+                          </label>
+                          <label class="radio-label">
+                              <input type="radio" name="submissionType" value="both"> Both
+                          </label>
+                      </div>
+                  </div>
+                  <div class="assignment-form-group file-upload-section">
+                      <label>Assignment Files (Optional)</label>
+                      <div class="file-upload-container">
+                          <div class="file-upload-area" id="dropZone">
+                              <i class="fas fa-cloud-upload-alt"></i>
+                              <p>Drag & drop files here or click to browse</p>
+                              <input type="file" id="assignmentFiles" multiple class="file-input">
+                          </div>
+                          <div id="fileList" class="file-list"></div>
+                      </div>
+                     <!-- Replace the checkboxes with labels -->
+<div class="file-types-container">
+  <p>Allowed file types:</p>
+  <div class="file-type-options">
+      <span class="file-type-label">
+          <i class="fas fa-file-pdf"></i> PDF
+      </span>
+      <span class="file-type-label">
+          <i class="fas fa-file-word"></i> DOC/DOCX
+      </span>
+      <span class="file-type-label">
+          <i class="fas fa-file-image"></i> Images
+      </span>
+  </div>
+</div>
+                  </div>
+                  <div class="assignment-form-actions">
+                      <button type="button" id="cancelAssignment" class="cancel-btn">Cancel</button>
+                      <button type="submit" class="save-btn">Save Assignment</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+       
+    <!-- Invite Student Modal -->
+<!-- Invite Student Modal -->
+<!-- Improved Modal HTML -->
+<div id="inviteStudentModal" class="invite-student-modal">
+    <div class="invite-student-content">
+      <div class="modal-header">
+        <h3>Invite Student</h3>
+        <span class="close-invite-student" onclick="closeInviteStudentModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <label for="studentEmailInput">Email Address</label>
+          <input type="email" id="studentEmailInput" placeholder="Enter student's email" required />
+        </div>
+        <div class="modal-actions">
+          <button class="btn-cancel" onclick="closeInviteStudentModal()">Cancel</button>
+          <button class="btn-invite" onclick="inviteStudent(event)">Send Invitation</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="studentList">
+    <!-- Student emails will be displayed here -->
+</div>
+
+
+<!-- Modal Backdrop -->
+<div id="addLessonModalBackdrop" class="modal-backdrop">
+    <!-- Modal Container -->
+    <div id="addLessonModal" class="modal">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3 class="modal-title">Add New Lesson</h3>
+        <span class="modal-close" onclick="closeAddLessonModal()">&times;</span>
+      </div>
+  
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="lessonTitle">Lesson Title*</label>
+          <input type="text" id="lessonTitle" placeholder="Enter lesson title" required />
+        </div>
+        <div class="form-group">
+          <label for="lessonContent">Content</label>
+          <textarea id="lessonContent" rows="6" placeholder="Enter lesson content or instructions"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="lessonFile">Lesson Materials</label>
+          <div class="file-upload-container">
+            <div class="file-upload-area" id="lessonDropZone">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <p>Drag & drop files here or click to browse</p>
+              <input type="file" id="lessonFile" class="file-input" />
+            </div>
+            <div id="lessonFileList" class="file-list"></div>
+          </div>
+          <div class="file-types-info">
+            <p>Allowed file types: PDF, DOC/DOCX, PPT/PPTX</p>
+          </div>
+        </div>
+      </div>
+      <progress id="lessonUploadProgress" value="0" max="100" style="width: 100%; display: block; margin-top: 10px;"></progress>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeAddLessonModal()">Cancel</button>
+        <button class="btn btn-primary save-lesson-btn" onclick="saveLesson(event)">Save Lesson</button>
+    </div>
+    </div>
+</div>
+  
+
+  <div id="quizResultsContainer" style="display: none;"></div>
+
+
+    <!-- Add Course Modal -->
+    <div class="modal-backdrop" id="addCourseModal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Create New Course</h3>
+                <span class="modal-close" onclick="closeAddCourseModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="addCourseForm">
+                    <div class="form-group">
+                        <label for="courseTitle">Course Title</label>
+                        <input type="text" id="courseTitle" class="form-control" placeholder="Enter course title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseCode">Course Code</label>
+                        <input type="text" id="courseCode" class="form-control" placeholder="Enter course code" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseDescription">Description</label>
+                        <textarea id="courseDescription" class="form-control" placeholder="Enter course description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseMeta">Section</label>
+                        <input type="text" id="courseMeta" class="form-control" placeholder="e.g., BSIT-2C" required>
+                    </div>
+                    <button type="button" class="btn btn-secondary" onclick="closeAddCourseModal()">Cancel</button>
+                    <button type="button" class="btn btn-primary save-course" onclick="saveCourse()">Save</button>
+                    <div id="courseFeedback" class="feedback-message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Details Section -->
+    <div id="courseDetails" class="course-details" style="display: none;">
+        <div class="course-details-header">
+            <h2 id="courseTitleDetail"></h2>
+            <button class="btn btn-secondary" onclick="closeCourseDetails()">Back to Courses</button>
+        </div>
+        <div class="course-details-body">
+            <p><strong>Code:</strong> <span id="courseCodeDetail"></span></p>
+            <p><strong>Description:</strong> <span id="courseDescriptionDetail"></span></p>
+            <p><strong>Section:</strong> <span id="courseMetaDetail"></span></p>
+        </div>
+    </div>
+    
+
+    <script type="module">
+       
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+
+// Your Firebase config
+const firebaseConfig = {
+    apiKey: "AIzaSyDMs8HtwRyimV3UFJAg633dBmOy6KrxT90",
+    authDomain: "educonnect-f70d6.firebaseapp.com",
+    projectId: "educonnect-f70d6",
+    storageBucket: "educonnect-f70d6.appspot.com",
+    messagingSenderId: "211587031768",
+    appId: "1:211587031768:web:5b406b1647d4a9a9212dad"
+};
+
+
+// Init Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+// Monitor Auth
+onAuthStateChanged(auth, async (user) => {
+  const spinner = document.getElementById("coursesSpinner");
+  const grid = document.getElementById("coursesGrid");
+  
+  if (user) {
+    console.log("Signed in as:", user.email);
+    const courseRef = collection(db, "courses");
+    const q = query(courseRef, where("teacherId", "==", user.uid));
+    const querySnapshot = await getDocs(q);
+
+    // Hide spinner
+    if (spinner) spinner.style.display = "none";
+
+    // Render courses
+    querySnapshot.forEach(doc => {
+      console.log("Course:", doc.data());
+      const course = doc.data();
+      const card = document.createElement("div");
+      card.className = "course-card";
+      card.innerHTML = `
+        <div class="course-card-header" style="background-color: ${course.color || '#ccc'};"></div>
+        <div class="course-card-body">
+            <h3>${course.title}</h3>
+            <p>${course.code}</p>
+            <p>${course.section || course.meta || ""}</p>
+        </div>`;
+      grid.appendChild(card);
+    });
+  } else {
+    console.log("Not signed in.");
+    // Hide spinner
+    if (spinner) spinner.style.display = "none";
+    grid.innerHTML += "<p style='text-align:center;'>Please sign in to view your courses.</p>";
+  }
+});
+
+// Create course logic
+document.getElementById("addCourseForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const title = document.getElementById("courseTitle").value;
+  const code = document.getElementById("courseCode").value;
+  const description = document.getElementById("courseDescription").value;
+  const section = document.getElementById("courseMeta").value;
+
+  const user = auth.currentUser;
+  if (!user) return alert("Not signed in");
+
+  try {
+    await addDoc(collection(db, "courses"), {
+      title,
+      code,
+      description,
+      section,
+      teacherId: user.uid,
+      timestamp: new Date()
+    });
+    alert("Course added!");
+  } catch (err) {
+    console.error("Error adding course:", err);
+  }
+});
+
+      </script>
+      
+    <script type="module" src="teachercourses.js"></script> 
+</body>
+</html>

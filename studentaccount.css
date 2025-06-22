@@ -1,0 +1,822 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Header Styles */
+.top-header {
+    background-color: #FF7043;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 63px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px; /* Increased font size */
+    font-weight: bold;
+}
+
+.logo span {
+    letter-spacing: 0.5px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 260px; /* Slightly wider to accommodate larger font */
+    background: linear-gradient(to bottom, #333, #222);
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 63px;
+    left: 0;
+    overflow-y: auto;
+    padding-top: 10px;
+    transition: all 0.3s ease;
+    z-index: 99;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin: 8px 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ccc;
+    padding: 14px 20px; /* Increased padding for larger touch targets */
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.sidebar-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #FF7043;
+    transform: translateX(5px);
+}
+
+.sidebar-menu li.active a {
+    background: linear-gradient(90deg, rgba(255, 112, 67, 0.2), transparent);
+    color: #FF7043;
+    border-left: 4px solid #FF7043;
+    padding-left: 16px;
+}
+
+.sidebar-icon {
+    font-size: 20px; /* Increased font size */
+    margin-right: 14px;
+    width: 26px;
+    text-align: center;
+}
+
+.sidebar-text {
+    font-size: 18px; /* Increased font size */
+    font-weight: 500;
+}
+
+/* Main Content Adjustment */
+.main-content {
+    margin-left: 260px; /* Match sidebar width */
+    margin-top: 63px;
+    padding: 30px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+    }
+    .sidebar-text {
+        display: none;
+    }
+    .main-content {
+        margin-left: 70px;
+    }
+}
+
+/* Main Content Styles */
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.dashboard-title {
+    font-size: 28px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Account Container */
+.account-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.account-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title i {
+    color: #FF7043;
+}
+
+/* Profile Section */
+.profile-content {
+    display: flex;
+    gap: 30px;
+}
+
+.profile-picture-section {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-picture-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #FF7043;
+}
+
+.upload-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px;
+    text-align: center;
+    border-bottom-left-radius: 75px;
+    border-bottom-right-radius: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.profile-picture-container:hover .upload-overlay {
+    opacity: 1;
+}
+
+.upload-overlay i {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.profile-details {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-input:read-only {
+    background-color: #f5f5f5;
+    color: #777;
+}
+
+.save-btn {
+    background-color: #FF7043;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    grid-column: span 2;
+    width: fit-content;
+    justify-self: end;
+}
+
+.save-btn:hover {
+    background-color: #F4511E;
+}
+
+/* Account Settings */
+.settings-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.subsection-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.toggle-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #FF7043;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 24px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.action-btn {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    margin-bottom: 15px;
+}
+
+.action-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.sessions-section {
+    margin-top: 15px;
+}
+
+.sessions-section h4 {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.session-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.session-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.session-info i {
+    font-size: 20px;
+    color: #555;
+}
+
+.session-info p {
+    font-weight: 500;
+}
+
+.session-info small {
+    color: #777;
+    font-size: 12px;
+}
+
+.session-end-btn {
+    background-color: transparent;
+    color: #FF7043;
+    border: 1px solid #FF7043;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s;
+}
+
+.session-end-btn:hover {
+    background-color: #FF7043;
+    color: white;
+}
+
+/* My Files Section */
+.files-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.storage-info {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.storage-progress {
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #FF7043;
+    border-radius: 4px;
+}
+
+.storage-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+}
+
+.upload-icon {
+    font-size: 40px;
+    color: #FF7043;
+    margin-bottom: 10px;
+}
+
+.uploaded-files {
+    margin-top: 15px;
+}
+
+.file-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.file-item:hover {
+    background-color: #f9f9f9;
+}
+
+.file-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #FF7043;
+    font-size: 20px;
+}
+
+.file-info {
+    flex-grow: 1;
+}
+
+.file-name {
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.file-size {
+    font-size: 12px;
+    color: #777;
+}
+
+.file-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.file-action-btn {
+    background-color: transparent;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.file-action-btn:hover {
+    color: #FF7043;
+}
+
+/* Logout Section */
+.logout-section {
+    background-color: #fff8f6;
+    border: 1px solid #FF7043;
+}
+
+.logout-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
+.logout-btn {
+    background-color: #FF7043;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logout-btn:hover {
+    background-color: #F4511E;
+}
+
+/* Footer */
+.footer {
+    margin-left: 240px;
+    padding: 20px;
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+}
+
+/* Responsive Design Improvements */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 70px;
+        overflow: hidden;
+    }
+    
+    .sidebar-text {
+        display: none;
+    }
+    
+    .sidebar-icon {
+        margin-right: 0;
+        font-size: 20px;
+    }
+    
+    .sidebar-menu a {
+        justify-content: center;
+        padding: 12px 5px;
+    }
+    
+    .main-content {
+        margin-left: 70px;
+    }
+    
+    .footer {
+        margin-left: 70px;
+    }
+    
+    .profile-content {
+        flex-direction: column;
+    }
+    
+    .profile-picture-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .profile-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .save-btn {
+        grid-column: span 1;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+    }
+
+    .sidebar-text {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 70px;
+    }
+
+    .footer {
+        margin-left: 70px;
+    }
+}
+
+    
+    .account-container {
+        gap: 15px;
+    }
+    
+    .account-section {
+        padding: 15px;
+    }
+    
+    .dashboard-title {
+        font-size: 22px;
+    }
+    
+    .section-title {
+        font-size: 18px;
+    }
+    
+    .profile-details {
+        gap: 10px;
+    }
+    
+    .form-input {
+        padding: 8px;
+    }
+
+
+@media (max-width: 576px) {
+    .top-header {
+        padding: 10px 15px;
+        height: 56px;
+    }
+    
+    .logo span {
+        font-size: 18px;
+    }
+    
+    .dashboard-title {
+        font-size: 20px;
+    }
+    
+    .section-title {
+        font-size: 16px;
+    }
+    
+    .profile-picture-container {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .session-item {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .session-end-btn {
+        align-self: flex-end;
+    }
+    
+    .file-item {
+        flex-wrap: wrap;
+    }
+    
+    .file-actions {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+/* Mobile-specific touch improvements */
+@media (hover: none) {
+    .profile-picture-container .upload-overlay {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .sidebar-menu a {
+        padding: 15px 10px;
+    }
+    
+    button, .file-action-btn, .session-end-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .form-input {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+/* Prevent zoom on input focus on mobile */
+@media screen and (max-width: 768px) {
+    input, select, textarea {
+        font-size: 16px;
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+    background-color: white;
+    margin: auto;
+    padding: 24px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    transform: scale(0.7);
+    transition: transform 0.3s ease-in-out;
+    animation: scaleIn 0.3s ease-in-out forwards;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-icon {
+    font-size: 48px;
+    color: #ff4d4d;
+    margin-bottom: 16px;
+}
+
+.modal-body {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.modal-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.cancel-btn {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.confirm-btn {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.7); }
+    to { transform: scale(1); }
+}

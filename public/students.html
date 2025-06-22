@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="students.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+</head>
+
+<header class="top-header">
+    <div class="logo">
+        <span>EduConnect</span>
+    </div>
+
+    
+</header>
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+<!-- Sidebar HTML -->
+<nav class="sidebar">
+    <ul class="sidebar-menu">
+        <li class="active">
+            <a href="students.html">
+                <span class="sidebar-icon">🏠</span>
+                <span class="sidebar-text">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="studentcourse.html">
+                <span class="sidebar-icon">📚</span>
+                <span class="sidebar-text">Courses</span>
+            </a>
+        </li>
+        <li>
+            <a href="studentgrades.html">
+                <span class="sidebar-icon">📊</span>
+                <span class="sidebar-text">Grades</span>
+            </a>
+        </li>
+        <li>
+            <a href="studentcalendar.html">
+                <span class="sidebar-icon">📅</span>
+                <span class="sidebar-text">Calendar</span>
+            </a>
+        </li>
+        <li>
+            <a href="studentchat.html">
+                <span class="sidebar-icon">📨</span>
+                <span class="sidebar-text">Messages</span>
+            </a>
+        </li>
+        <li>
+            <a href="studenthelp.html">
+                <span class="sidebar-icon">❓</span>
+                <span class="sidebar-text">Help</span>
+            </a>
+        </li>
+        <!-- Account moved to bottom -->
+        <li>
+            <a href="studentaccount.html">
+                <span class="sidebar-icon">👤</span>
+                <span class="sidebar-text">Account</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content">
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <div class="welcome-content">
+            <h1 class="welcome-title" id="welcomeTitle">
+                Welcome back,
+                <span id="welcomeName">
+                    <span class="spinner"></span>
+                </span>!
+            </h1>
+
+            <p class="welcome-subtitle">Ready for another productive day? Here's your learning overview for today.</p>
+
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="activeCourseCount">0</div>
+                    <div class="stat-label">Active Courses</div>
+                </div>
+                <div class="stat-card time-card">
+                    <div class="stat-value" id="currentTime">Loading...</div>
+                    <div class="stat-label" id="currentDate">Loading...</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Dashboard Grid -->
+    <div class="dashboard-grid">
+        <!-- Left Column - Schedule -->
+        <div class="schedule-column">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-title-icon">📆</div>
+                        Upcoming Schedule
+                    </div>
+                    <div class="date-pill">
+                        <span id="currentDate"></span>
+                    </div>
+                </div>
+                <div class="card-body" id="scheduleContainer">
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <span>Loading schedule...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column - Notifications and Progress -->
+        <div class="info-column">
+            <!-- Notifications Section -->
+            <div class="card notification-card">
+                <div class="card-header-">
+                    <div class="card-title">
+                        <div class="card-title-icon">🔔</div>
+                        <span>Notifications</span>
+                    </div>
+                </div>
+                <div id="notificationContainer">
+                    <div class="notifications-wrapper">
+                        <!-- Notifications will be inserted here -->
+                        <div class="notification-loading">
+                            <div class="spinner"></div>
+                            <span>Loading notifications...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Progress Section -->
+           
+</main>
+
+<!-- Footer -->
+
+</div>
+
+<script type="module" src="students.js"> </script>
+    
+
+
+
+
+</body>
+
+</html>

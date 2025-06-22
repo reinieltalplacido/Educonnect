@@ -1,0 +1,959 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Header Styles */
+.top-header {
+    background-color: #FF7043;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 63px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px; /* Increased font size */
+    font-weight: bold;
+}
+
+.logo span {
+    letter-spacing: 0.5px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 260px; /* Slightly wider to accommodate larger font */
+    background: linear-gradient(to bottom, #333, #222);
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 63px;
+    left: 0;
+    overflow-y: auto;
+    padding-top: 10px;
+    transition: all 0.3s ease;
+    z-index: 99;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin: 8px 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ccc;
+    padding: 14px 20px; /* Increased padding for larger touch targets */
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.sidebar-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #FF7043;
+    transform: translateX(5px);
+}
+
+.sidebar-menu li.active a {
+    background: linear-gradient(90deg, rgba(255, 112, 67, 0.2), transparent);
+    color: #FF7043;
+    border-left: 4px solid #FF7043;
+    padding-left: 16px;
+}
+
+.sidebar-icon {
+    font-size: 20px; /* Increased font size */
+    margin-right: 14px;
+    width: 26px;
+    text-align: center;
+}
+
+.sidebar-text {
+    font-size: 18px; /* Increased font size */
+    font-weight: 500;
+}
+
+/* Main Content Adjustment */
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+    }
+    .sidebar-text {
+        display: none;
+    }
+    .main-content {
+        margin-left: 70px;
+    }
+}
+
+/* Main Content Styles */
+.main-content {
+    margin-top: 70px;
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 240px);
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Calendar Styles */
+.calendar-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-navigation {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.calendar-title {
+    font-size: 20px;
+    font-weight: 600;
+    min-width: 130px;
+}
+
+.calendar-nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.calendar-nav-button:hover {
+    background-color: #f0f0f0;
+}
+
+.today-button {
+    background-color: #f4f4f4;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.today-button:hover {
+    background-color: #e8e8e8;
+}
+
+.view-options {
+    display: flex;
+    gap: 5px;
+    background-color: #f4f4f4;
+    padding: 4px;
+    border-radius: 20px;
+}
+
+.view-option {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.view-option.active {
+    background-color: #333;
+    color: white;
+}
+
+.view-option:hover:not(.active) {
+    background-color: #e8e8e8;
+}
+
+.add-event-button {
+    background-color: #FF7043;
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    margin-left: 10px;
+    box-shadow: 0 2px 5px rgba(255,112,67,0.3);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.add-event-button:hover {
+    transform: scale(1.05);
+    background-color: #ff8a5e;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background-color: #eee;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.calendar-header-cell {
+    background-color: #f8f8f8;
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+}
+
+.calendar-day {
+    background-color: white;
+    min-height: 120px;
+    padding: 8px;
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+.calendar-day:hover {
+    background-color: #f9f9f9;
+}
+
+.date-number {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 14px;
+    color: #555;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.current-day {
+    background-color: #f0f8ff;
+}
+
+.today .date-number {
+    background-color: #FF7043;
+    color: white;
+}
+
+.other-month {
+    background-color: #fafafa;
+}
+
+.other-month .date-number {
+    color: #aaa;
+}
+
+/* Update the event styling to start below the date number */
+.event {
+    background-color: #e3f2fd;
+    border-left: 3px solid #2196F3;
+    padding: 5px 8px;
+    border-radius: 4px;
+    margin-top: 35px; /* Increased from 5px to create space below date number */
+    font-size: 12px;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 4px;
+    transition: transform 0.2s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Ensure subsequent events stack properly */
+.event + .event {
+    margin-top: 4px;
+}
+
+.event.assignment {
+    background-color: #e8f5e9;
+    border-left-color: #4CAF50;
+}
+
+.event.exam {
+    background-color: #ffebee;
+    border-left-color: #F44336;
+}
+
+.event.meeting {
+    background-color: #fff8e1;
+    border-left-color: #FFC107;
+}
+
+/* Task Section */
+.tasks-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    padding: 20px;
+}
+
+.tasks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.tasks-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.tasks-list {
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-checkbox {
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+    accent-color: #FF7043;
+}
+
+.task-content {
+    flex-grow: 1;
+}
+
+.task-name {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.task-details {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    color: #666;
+}
+
+.task-date, .task-course {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    margin-right: 60px;
+  }
+  
+  .task-action-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  
+  .edit-btn {
+    background-color: #f0ad4e;
+    color: white;
+  }
+  
+  .edit-btn:hover {
+    background-color: #ec971f;
+  }
+  
+  .delete-btn {
+    background-color: #d9534f;
+    color: white;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c9302c;
+  }
+  
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px;
+    display: none;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    display: grid;
+    gap: 15px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+.modal input,
+.modal select,
+.modal textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #555;
+}
+
+
+.form-input, .form-select {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.form-input:focus, .form-select:focus {
+    outline: none;
+    border-color: #FF7043;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-cancel {
+    background-color: #f4f4f4;
+    border: none;
+    color: #333;
+}
+
+.btn-cancel:hover {
+    background-color: #e8e8e8;
+}
+
+.btn-submit {
+    background-color: #FF7043;
+    border: none;
+    color: white;
+}
+
+.btn-submit:hover {
+    background-color: #ff8a5e;
+}
+
+/* Task tags */
+.task-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-left: 8px;
+    font-weight: 500;
+}
+
+.tag-assignment {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.tag-exam {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.tag-meeting {
+    background-color: #fff8e1;
+    color: #f57f17;
+}
+
+/* Add floating + button styles similar to the screenshot */
+.floating-add-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #FF7043;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 99;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.floating-add-button:hover {
+    transform: scale(1.05);
+    background-color: #ff8a5e;
+}
+
+/* Simplified header style matching screenshot */
+.simplified-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    background-color: white;
+    border-radius: 12px 12px 0 0;
+    height: 60px;
+    margin-bottom: 0;
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.month-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.view-toggle {
+    background-color: #f4f4f4;
+    border-radius: 20px;
+    padding: 4px;
+    display: flex;
+}
+
+.view-toggle-btn {
+    background: none;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 16px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.view-toggle-btn.active {
+    background-color: #333;
+    color: white;
+}
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    border-left: 6px solid #4CAF50;
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    z-index: 1000;
+}
+
+.toast.active {
+    transform: translateX(0%);
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+}
+
+.toast-content i {
+    font-size: 25px;
+    color: #4CAF50;
+    margin-right: 12px;
+}
+
+.toast-message {
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #ddd;
+}
+
+.toast-progress:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #4CAF50;
+}
+
+.toast.active .toast-progress:before {
+    animation: progress 3s linear forwards;
+}
+
+@keyframes progress {
+    100% {
+        right: 100%;
+    }
+}
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    z-index: 1050;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    animation: notificationFadeIn 0.3s;
+}
+
+@keyframes notificationFadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.notification.info {
+    background-color: #17a2b8;
+}
+
+.notification.success {
+    background-color: #28a745;
+}
+
+.notification.error {
+    background-color: #dc3545;
+}
+
+.notification.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+/* Add these media queries at the end of your existing CSS file */
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media screen and (max-width: 992px) {
+    .main-content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .calendar-grid {
+        gap: 0.5px;
+    }
+
+    .calendar-day {
+        min-height: 100px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+    }
+
+    .sidebar-text {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+        padding: 15px;
+    }
+
+    .calendar-title {
+        font-size: 16px;
+        min-width: 100px;
+    }
+
+    .view-options {
+        display: none;
+    }
+
+    .calendar-day {
+        min-height: 80px;
+        padding: 4px;
+    }
+
+    .date-number {
+        font-size: 12px;
+        width: 24px;
+        height: 24px;
+    }
+
+    .event {
+        font-size: 10px;
+        padding: 3px 6px;
+        margin-top: 28px;
+    }
+}
+
+/* Small devices (mobile phones, 576px and below) */
+@media screen and (max-width: 576px) {
+    .logo span {
+        display: none;
+    }
+
+    .sidebar {
+        width: 0;
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        width: 200px;
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .calendar-container {
+        padding: 10px;
+    }
+
+    .calendar-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .calendar-navigation {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .calendar-grid {
+        font-size: 12px;
+    }
+
+    .calendar-day {
+        min-height: 60px;
+    }
+
+    .modal {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .task-actions {
+        margin-right: 0;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .task-action-btn {
+        width: 100%;
+    }
+
+    .floating-add-button {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+    }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 375px) {
+    .top-header {
+        padding: 8px 12px;
+        height: 50px;
+    }
+
+    .calendar-header-cell {
+        padding: 8px 4px;
+        font-size: 12px;
+    }
+
+    .event {
+        margin-top: 25px;
+        padding: 2px 4px;
+    }
+
+    .tasks-container {
+        padding: 12px;
+    }
+
+    .task-details {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+/* Handle landscape orientation on mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .sidebar {
+        top: 50px;
+    }
+
+    .main-content {
+        margin-top: 50px;
+    }
+
+    .calendar-day {
+        min-height: 50px;
+    }
+
+    .modal {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}

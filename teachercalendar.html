@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher - Calendar</title>
+    <link rel="stylesheet" href="teachercalendar.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+</head>
+<body>
+    <header class="top-header">
+        <div class="logo">
+            <span>EduConnect</span>
+        </div>
+    </header>
+    
+    <!-- Sidebar HTML -->
+    <nav class="sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="teacher.html">
+                    <span class="sidebar-icon">🏠</span>
+                    <span class="sidebar-text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="teachercourses.html">
+                    <span class="sidebar-icon">📚</span>
+                    <span class="sidebar-text">Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="teachergrades.html">
+                    <span class="sidebar-icon">📊</span>
+                    <span class="sidebar-text">Grades</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="teachercalendar.html">
+                    <span class="sidebar-icon">📅</span>
+                    <span class="sidebar-text">Calendar</span>
+                </a>
+            </li>
+            <li>
+                <a href="teacherchat.html">
+                    <span class="sidebar-icon">📨</span>
+                    <span class="sidebar-text">Messages</span>
+                </a>
+            </li>
+            <li>
+                <a href="teacherhelp.html">
+                    <span class="sidebar-icon">❓</span>
+                    <span class="sidebar-text">Help</span>
+                </a>
+            </li>
+            <!-- Account moved to bottom -->
+            <li>
+                <a href="teacheraccount.html">
+                    <span class="sidebar-icon">👤</span>
+                    <span class="sidebar-text">Account</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+        
+        <main class="main-content">
+            <div class="page-container">
+                <div class="calendar-container">
+                    <!-- Simplified Header -->
+                    <div class="simplified-header">
+                        <div class="nav-controls">
+                            <button class="today-button">Today</button>
+                            <button class="calendar-nav-button" id="prevMonth">&#10094;</button>
+                            <button class="calendar-nav-button" id="nextMonth">&#10095;</button>
+                            <div class="month-title" id="calendarTitle">April 2025</div>
+                        </div>
+                        <div class="view-toggle">
+                            <button class="view-toggle-btn" data-view="week">Week</button>
+                            <button class="view-toggle-btn active" data-view="month">Month</button>
+                            <button class="view-toggle-btn" data-view="agenda">Agenda</button>
+                        </div>
+                    </div>
+                    
+                    <div class="calendar-grid" id="calendarGrid">
+                        <div class="calendar-header-cell">SUN</div>
+                        <div class="calendar-header-cell">MON</div>
+                        <div class="calendar-header-cell">TUE</div>
+                        <div class="calendar-header-cell">WED</div>
+                        <div class="calendar-header-cell">THU</div>
+                        <div class="calendar-header-cell">FRI</div>
+                        <div class="calendar-header-cell">SAT</div>
+                    </div>
+                </div>
+                
+                <div class="tasks-container">
+                    <div class="tasks-header">
+                        <h2 class="tasks-title">Upcoming Tasks</h2>
+                    </div>
+                    <ul class="tasks-list" id="tasksList"></ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Floating Add Button -->
+    <div class="floating-add-button" id="floatingAddBtn">+</div>
+
+    <!-- Add Task Modal -->
+    <div class="modal" id="addTaskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add New Task</h3>
+                <button class="modal-close" id="closeTaskModal">&times;</button>
+            </div>
+            <form class="modal-form" id="addTaskForm">
+                <div class="form-group">
+                    <label class="form-label" for="taskName">Task Name</label>
+                    <input type="text" id="taskName" class="form-input" placeholder="Enter task name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="taskDate">Date</label>
+                    <input type="date" id="taskDate" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="taskTime">Time (optional)</label>
+                    <input type="time" id="taskTime" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="taskType">Task Type</label>
+                    <select id="taskType" class="form-select" required>
+                        <option value="assignment">📘 Assignment</option>
+                        <option value="quiz">📝 Quiz</option>
+                        <option value="exam">📚 Exam</option>
+                        <option value="meeting">📅 Meeting</option>
+                        <option value="project">💡 Project</option>
+                        <option value="event">🎉 Event</option>
+                        <option value="other">❓ Other</option>
+                        
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="taskCourse">Course*</label>
+                    <select id="taskCourse" required>
+                        <option value="">Select a course</option>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="taskDescription">Description (optional)</label>
+                    <textarea id="taskDescription" class="form-input" rows="3" placeholder="Add details about this task"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-cancel" id="cancelTaskForm">Cancel</button>
+                    <button type="submit" class="btn btn-submit">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+   <!-- Add this right after your body tag opens -->
+<div id="modalOverlay" class="modal-overlay"></div>
+    <script type="module" src="teachercalendar.js"></script>
+   
+</body>
+</html>

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="sign.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h1>Welcome to EduConnect</h1>
+            <p>Join our community of students and teachers to enhance your learning experience.</p>
+
+            <div class="benefits">
+                <div class="benefit-item">
+                    <div class="benefit-icon">📚</div>
+                    <div class="benefit-text">Access all your learning materials in one place</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📝</div>
+                    <div class="benefit-text">Easily submit and track assignments</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💬</div>
+                    <div class="benefit-text">Communicate with teachers and classmates</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📊</div>
+                    <div class="benefit-text">Track your progress with detailed analytics</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="form-header">
+                <div class="logo">
+                    <span class="logo-icon">📚</span> EduConnect
+                </div>
+                <h2>Create Your Account</h2>
+                <p>Get started with EduConnect today</p>
+            </div>
+
+            <div class="tabs">
+                <div class="tab active" id="signup-tab">Sign Up</div>
+                <div class="tab" id="login-tab">Log In</div>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div class="form-container" id="signup-form">
+                <div class="form-step active" id="step-role">
+                    <div class="form-group">
+                        <label>I am a:</label>
+                        <div class="role-selector">
+                            <div class="role-option" id="student-role">
+                                <div class="role-icon">👨‍🎓</div>
+                                <div class="role-label">Student</div>
+                            </div>
+                            <div class="role-option" id="teacher-role">
+                                <div class="role-icon">👨‍🏫</div>
+                                <div class="role-label">Teacher</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn" id="continue-btn">Continue</button>
+                </div>
+
+                <!-- Student Registration Form -->
+                <div class="form-step" id="step-student">
+                    <div class="form-group">
+                        <label for="student-email">Email Address</label>
+                        <input type="email" id="student-email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="student-password">Password</label>
+                        <input type="password" id="student-password" placeholder="Create a password">
+                    </div>
+                    <div class="form-group">
+                        <label for="student-full-name">Full Name</label>
+                        <input type="text" id="student-full-name" placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="student-school">School Name</label>
+                        <input type="text" id="student-school" placeholder="Enter your school name">
+                    </div>
+
+                    <div class="form-group terms-checkbox" style="margin-top: 10px;">
+                        <input type="checkbox" id="terms-agree" required style="vertical-align: middle;">
+                        <label for="terms-agree" style="font-size: 14px;">I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="privacy-link">Privacy Policy</a></label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-back" id="student-back-btn">Back</button>
+                        <button class="btn" id="student-continue-btn">Continue</button>
+                    </div>
+
+                    
+                </div>
+
+                <!-- Student Details Form -->
+                <div class="form-step" id="step-student-details">
+                    <div class="form-group">
+                        <label for="student-cor">Certificate of Registration (COR)</label>
+                        <input type="file" id="student-cor" accept=".pdf,.jpg,.jpeg,.png" required>
+                        <small class="form-text">Please upload your current semester's COR to verify your enrollment
+                            (PDF or image format)</small>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-back" id="student-details-back-btn">Back</button>
+                        <button class="btn" id="student-complete-btn">Complete Sign Up</button>
+                    </div>
+                </div>
+
+                <!-- Teacher Registration Form -->
+                <div class="form-step" id="step-teacher">
+                    <div class="form-group">
+                        <label for="teacher-email">Email Address</label>
+                        <input type="email" id="teacher-email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-password">Password</label>
+                        <input type="password" id="teacher-password" placeholder="Create a password">
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-full-name">Full Name</label>
+                        <input type="text" id="teacher-full-name" placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-school">School Name</label>
+                        <input type="text" id="teacher-school" placeholder="Enter your school name">
+                    </div>
+                    <!-- Terms of Service Checkbox -->
+                    <div class="form-group terms-checkbox" style="margin-top: 10px;">
+                        <input type="checkbox" id="terms-agree" required style="vertical-align: middle;">
+                        <label for="terms-agree" style="font-size: 14px;">I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="privacy-link">Privacy Policy</a></label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-back" id="teacher-back-btn">Back</button>
+                        <button class="btn" id="teacher-continue-btn">Continue</button>
+                    </div>
+                </div>
+
+                <!-- Teacher Details Form -->
+                <div class="form-step" id="step-teacher-details">
+                    <div class="form-group">
+                        <label for="teacher-department">College Department</label>
+                        <select id="teacher-department" required>
+                            <option value="">Select your college department</option>
+                            <option value="architecture">College of Architecture</option>
+                            <option value="criminology">College of Criminology</option>
+                            <option value="education">College of Education</option>
+                            <option value="engineering">College of Engineering</option>
+                            <option value="ict">College of Information and Communication Technology</option>
+                            <option value="management">College of Management and Business Technology</option>
+                            <option value="public-admin">College of Public Administration and Disaster Management
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-years">Year Levels Taught</label>
+                        <select id="teacher-years" multiple required>
+                            <option value="1">1st Year College</option>
+                            <option value="2">2nd Year College</option>
+                            <option value="3">3rd Year College</option>
+                            <option value="4">4th Year College</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-coe">Certificate of Employment (COE)</label>
+                        <input type="file" id="teacher-coe" accept=".pdf,.doc,.docx" required>
+                        <small class="form-text">Please upload your COE to verify your teaching position (PDF or DOC
+                            format)</small>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-back" id="teacher-details-back-btn">Back</button>
+                        <button class="btn" id="teacher-complete-btn">Complete Sign Up</button>
+                    </div>
+                </div>
+
+                <div class="form-step" id="step-complete">
+                    <div class="completion-container">
+                        <div class="check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <h2>Registration Complete!</h2>
+                        <p>Your EduConnect account has been created successfully.</p>
+
+                        <div id="email-display" class="email-display">
+                            <p>Your email address For Educonnect has been created:</p>
+                            <div class="email-address">
+                                <span id="generated-email"></span>
+                                <button id="copy-email" class="icon-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="email-info">This email will be used for logging in to your account.</p>
+
+                            <button id="send-verification" class="btn btn-secondary">Send Verification Email</button>
+                        </div>
+
+                        <p class="verification-note">Check your email for verification and next steps.</p>
+
+                        <button class="btn" id="go-dashboard-btn">Go to Dashboard</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login Form -->
+            <div class="form-container" id="login-form" style="display: none;">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password">
+                </div>
+                <div style="text-align: right; margin-bottom: 20px;">
+                    <a href="passwordreset.html" id="forgot-password">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn" id="login-btn">Log In</button>
+                <!-- Google Sign-In Button -->
+<div style="text-align: center; margin-top: 20px;">
+    <button id="google-signin-btn" class="btn" style="background-color: #ffffff; color: #000000; border: 1px solid #ccc;">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo" style="width: 20px; vertical-align: middle; margin-right: 8px;">
+        Continue with Google
+    </button>
+</div>
+
+                <div class="form-footer">
+                    Don't have an account? <a href="sign.html" id="switch-to-signup">Sign up now</a>
+                </div>
+            </div>
+
+
+            <!-- Add before closing body tag -->
+<div class="modal-container" id="terms-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Terms of Service & Privacy Policy</h3>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="terms-section">
+                <h4>Terms of Service</h4>
+                <div class="terms-content">
+                    <h5>1. Acceptance of Terms</h5>
+                    <p>By accessing and using EduConnect, you agree to these terms.</p>
+
+                    <h5>2. User Responsibilities</h5>
+                    <p>Users must maintain accurate information and secure their accounts.</p>
+
+                    <h5>3. Educational Use</h5>
+                    <p>This platform is strictly for educational purposes.</p>
+
+                    <h5>4. Code of Conduct</h5>
+                    <p>Users must respect academic integrity and community guidelines.</p>
+                </div>
+            </div>
+            <div class="privacy-section">
+                <h4>Privacy Policy</h4>
+                <div class="privacy-content">
+                    <h5>1. Data Collection</h5>
+                    <p>We collect necessary information to provide educational services.</p>
+
+                    <h5>2. Data Protection</h5>
+                    <p>Your information is encrypted and securely stored.</p>
+
+                    <h5>3. Information Usage</h5>
+                    <p>Data is used solely for educational purposes and platform improvement.</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" id="decline-terms">Decline</button>
+            <button class="btn btn-primary" id="accept-terms">Accept</button>
+        </div>
+    </div>
+</div>
+            <!-- Firebase Authentication Script -->
+            <script type="module">
+                import { 
+                    initializeApp 
+                } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+                
+                import { 
+                    getAuth, 
+                    GoogleAuthProvider, 
+                    signInWithPopup,
+                    createUserWithEmailAndPassword,  // Add this
+        signInWithEmailAndPassword,
+        sendEmailVerification,
+        signOut
+                } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+                
+                import { 
+                    getFirestore, 
+                    doc, 
+                    getDoc, 
+                    setDoc 
+                } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+            
+                // Firebase Config
+                const firebaseConfig = {
+                    apiKey: "AIzaSyDMs8HtwRyimV3UFJAg633dBmOy6KrxT90",
+                    authDomain: "educonnect-f70d6.firebaseapp.com",
+                    projectId: "educonnect-f70d6",
+                    storageBucket: "educonnect-f70d6.appspot.com",
+                    messagingSenderId: "211587031768",
+                    appId: "1:211587031768:web:5b406b1647d4a9a9212dad",
+                    measurementId: "G-WL4FBT24W3"
+                };
+            
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
+                const auth = getAuth(app);
+                const db = getFirestore(app);
+            
+                // Google Sign-In
+              
+            
+                document.addEventListener("DOMContentLoaded", () => {
+    const googleSigninBtn = document.getElementById('google-signin-btn');
+
+    googleSigninBtn.addEventListener('click', async () => {
+        googleSigninBtn.disabled = true;
+
+        const provider = new GoogleAuthProvider();
+
+        try {
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+            console.log('🔑 Google Sign-In Success:', user);
+
+            const userRef = doc(db, "users", user.uid);
+            const userSnap = await getDoc(userRef);
+
+            if (userSnap.exists()) {
+                // ✅ Existing user
+                const userData = userSnap.data();
+                console.log("📄 Existing user data:", userData);
+
+                // 🔄 Optional: update display info
+                await setDoc(userRef, {
+                    displayName: user.displayName || "",
+                    photoURL: user.photoURL || "",
+                    email: user.email || "",
+                    lastLogin: new Date()
+                }, { merge: true });
+
+                // Display profile (if you want to show it somewhere)
+                const userNameElement = document.getElementById("userName");
+                const userPhotoElement = document.getElementById("userPhoto");
+
+                if (userNameElement) userNameElement.textContent = userData.displayName || user.displayName || "No Name";
+                if (userPhotoElement) userPhotoElement.src = userData.photoURL || user.photoURL || "defaultProfilePic.jpg";
+
+                // 🚀 Redirect to dashboard
+                if (userData.role) {
+                    redirectToDashboard(userData.role);
+                } else {
+                    alert("No role assigned to your account. Please contact support.");
+                }
+            } else {
+                // ❌ Firestore record missing
+                alert("Account not found. Please sign up first or contact admin.");
+                await signOut(auth);
+            }
+        } catch (error) {
+            console.error('❌ Google Sign-In Error:', error);
+            alert("Sign-In failed: " + error.message);
+        } finally {
+            googleSigninBtn.disabled = false;
+        }
+    });
+});
+
+
+// Redirect function based on role
+function redirectToDashboard(role) {
+    if (role === "student") {
+        window.location.href = "students.html";
+    } else if (role === "teacher") {
+        window.location.href = "teacher.html";
+    } else {
+        alert("Unknown role. Please contact support.");
+    }
+}
+                // Utility Functions
+                function showStep(step) {
+                    document.querySelectorAll(".form-step").forEach((formStep) => {
+                        formStep.classList.remove("active");
+                    });
+                    const stepElement = document.getElementById(step);
+                    if (stepElement) {
+                        stepElement.classList.add("active");
+                    }
+                }
+              
+                function toggleTab(tabId) {
+                    document.querySelectorAll(".tab").forEach((tab) => {
+                        tab.classList.remove("active");
+                    });
+                    const tabElement = document.getElementById(tabId);
+                    if (tabElement) {
+                        tabElement.classList.add("active");
+                    }
+                }
+              
+                function validateEmail(email) {
+                    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return re.test(email);
+                }
+              
+                function validatePassword(password) {
+                    return password.length >= 6;
+                }
+              
+                function showError(message) {
+                    alert(message);
+                }
+              
+                // Add event listeners only if elements exist
+                document.addEventListener("DOMContentLoaded", () => {
+                    // Tab switching
+                    const signupTab = document.getElementById("signup-tab");
+                    const loginTab = document.getElementById("login-tab");
+                    const signupForm = document.getElementById("signup-form");
+                    const loginForm = document.getElementById("login-form");
+              
+                    if (signupTab && loginTab && signupForm && loginForm) {
+                        signupTab.addEventListener("click", () => {
+                            signupForm.style.display = "block";
+                            loginForm.style.display = "none";
+                            toggleTab("signup-tab");
+                        });
+              
+                        loginTab.addEventListener("click", () => {
+                            signupForm.style.display = "none";
+                            loginForm.style.display = "block";
+                            toggleTab("login-tab");
+                        });
+                    }
+              
+                    // Go to Dashboard Button (check user role)
+                    const goToDashboardBtn = document.getElementById("go-dashboard-btn");
+              
+                    if (goToDashboardBtn) {
+                        goToDashboardBtn.addEventListener("click", async () => {
+                            const user = auth.currentUser;
+              
+                            if (!user) {
+                                alert("No user is logged in.");
+                                return;
+                            }
+              
+                            try {
+                                const userDocRef = doc(db, "users", user.uid);
+                                const userDocSnap = await getDoc(userDocRef);
+              
+                                if (userDocSnap.exists()) {
+                                    const userData = userDocSnap.data();
+                                    const role = userData.role;
+              
+                                    if (role === "student") {
+                                        window.location.href = "students.html";
+                                    } else if (role === "teacher") {
+                                        window.location.href = "teacher.html";
+                                    } else {
+                                        alert("Unknown role in database.");
+                                    }
+                                } else {
+                                    alert("User document not found in Firestore.");
+                                }
+                            } catch (error) {
+                                console.error("Error checking user role:", error);
+                            }
+                        });
+                    } else {
+                        console.error("Dashboard button not found in DOM.");
+                    }
+              
+                    // Student Registration (COR Upload)
+                    const studentCompleteBtn = document.getElementById("student-complete-btn");
+                    if (studentCompleteBtn) {
+                        studentCompleteBtn.addEventListener("click", async () => {
+                            const corFile = document.getElementById("student-cor").files[0];
+                            if (!corFile) return showError("Please upload your Certificate of Registration (COR)");
+              
+                            const user = auth.currentUser;
+                            if (!user) return showError("No authenticated user found");
+              
+                            const storageRef = ref(storage, `uploads/students/${user.uid}/cor.${corFile.name.split('.').pop()}`);
+                            
+                            try {
+                                await uploadBytes(storageRef, corFile);
+                                const downloadURL = await getDownloadURL(storageRef);
+              
+                                await setDoc(doc(db, "users", user.uid), {
+                                    role: "student",
+                                    fullName: document.getElementById("student-full-name").value.trim(),
+                                    school: document.getElementById("student-school").value.trim(),
+                                    email: user.email,
+                                    corURL: downloadURL,
+                                    createdAt: new Date().toISOString()
+                                });
+              
+                                showStep("step-complete");
+                                document.getElementById("generated-email").textContent = user.email;
+              
+                            } catch (error) {
+                                showError("Error uploading COR: " + error.message);
+                            }
+                        });
+                    }
+              
+                    // Teacher Registration (COE Upload)
+                    const teacherCompleteBtn = document.getElementById("teacher-complete-btn");
+                    if (teacherCompleteBtn) {
+                        teacherCompleteBtn.addEventListener("click", async () => {
+                            const coeFile = document.getElementById("teacher-coe").files[0];
+                            const department = document.getElementById("teacher-department").value.trim();
+                            const yearsSelect = document.getElementById("teacher-years");
+                            const years = yearsSelect ? Array.from(yearsSelect.selectedOptions).map(option => option.value) : [];
+              
+                            if (!coeFile) return showError("Please upload your Certificate of Employment (COE)");
+              
+                            const user = auth.currentUser;
+                            if (!user) return showError("No authenticated user found");
+              
+                            const storageRef = ref(storage, `uploads/teachers/${user.uid}/coe.${coeFile.name.split('.').pop()}`);
+                            
+                            try {
+                                await uploadBytes(storageRef, coeFile);
+                                const downloadURL = await getDownloadURL(storageRef);
+              
+                                await setDoc(doc(db, "users", user.uid), {
+                                    role: "teacher",
+                                    fullName: document.getElementById("teacher-full-name").value.trim(),
+                                    school: document.getElementById("teacher-school").value.trim(),
+                                    department,
+                                    years,
+                                    email: user.email,
+                                    coeURL: downloadURL,
+                                    createdAt: new Date().toISOString()
+                                });
+              
+                                showStep("step-complete");
+                                document.getElementById("generated-email").textContent = user.email;
+              
+                            } catch (error) {
+                                showError("Error uploading COE: " + error.message);
+                            }
+                        });
+                    }
+              
+                    // Send Verification Email
+                    const sendVerificationBtn = document.getElementById("send-verification");
+                    if (sendVerificationBtn) {
+                        sendVerificationBtn.addEventListener("click", async () => {
+                            const user = auth.currentUser;
+                            if (user) {
+                                try {
+                                    await sendEmailVerification(user);
+                                    alert("Verification email sent successfully!");
+                                } catch (error) {
+                                    showError("Error sending verification email: " + error.message);
+                                }
+                            } else {
+                                showError("No user is currently signed in");
+                            }
+                        });
+                    }
+              
+                    // Login User
+                    const loginBtn = document.getElementById("login-btn");
+                    if (loginBtn) {
+                        loginBtn.addEventListener("click", async () => {
+                            const email = document.getElementById("login-email").value.trim();
+                            const password = document.getElementById("login-password").value;
+              
+                            // Form validation
+                            if (!validateEmail(email)) return showError("Please enter a valid email address");
+                            if (!password) return showError("Please enter your password");
+              
+                            try {
+                                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                                const user = userCredential.user;
+              
+                                // Fetch user data from Firestore
+                                const userDoc = await getDoc(doc(db, "users", user.uid));
+              
+                                if (userDoc.exists()) {
+                                    const userData = userDoc.data();
+              
+                                    // Redirect based on role
+                                    if (userData.role === 'student') {
+                                        window.location.href = "students.html";
+                                    } else if (userData.role === 'teacher') {
+                                        window.location.href = "teacher.html";
+                                    } else {
+                                        showError("Unknown user role");
+                                    }
+                                } else {
+                                    showError("User data not found");
+                                }
+                            } catch (error) {
+                                showError("Login error: " + error.message);
+                            }
+                        });
+                    }
+                });
+              
+                // Expose Firebase services globally if needed
+                window.auth = auth;
+                window.db = db;
+                window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+                window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+                window.sendEmailVerification = sendEmailVerification;
+                window.doc = doc;
+                window.setDoc = setDoc;
+                window.getDoc = getDoc;
+              </script>
+              
+
+
+            <script src="sign.js"></script>
+</body>
+
+</html>

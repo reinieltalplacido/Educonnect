@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student - Grades</title>
+    <link rel="stylesheet" href="studentgrades.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+</head>
+
+<body>
+    <header class="top-header">
+        <div class="logo">
+            <span>EduConnect</span>
+        </div>
+    </header>
+    
+    <!-- Sidebar HTML -->
+    <nav class="sidebar" id="sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="students.html">
+                    <span class="sidebar-icon">🏠</span>
+                    <span class="sidebar-text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="studentcourse.html">
+                    <span class="sidebar-icon">📚</span>
+                    <span class="sidebar-text">Courses</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="studentgrades.html">
+                    <span class="sidebar-icon">📊</span>
+                    <span class="sidebar-text">Grades</span>
+                </a>
+            </li>
+            <li>
+                <a href="studentcalendar.html">
+                    <span class="sidebar-icon">📅</span>
+                    <span class="sidebar-text">Calendar</span>
+                </a>
+            </li>
+            <li>
+                <a href="studentchat.html">
+                    <span class="sidebar-icon">📨</span>
+                    <span class="sidebar-text">Messages</span>
+                </a>
+            </li>
+            <li>
+                <a href="studenthelp.html">
+                    <span class="sidebar-icon">❓</span>
+                    <span class="sidebar-text">Help</span>
+                </a>
+            </li>
+            <!-- Account moved to bottom -->
+            <li>
+                <a href="studentaccount.html">
+                    <span class="sidebar-icon">👤</span>
+                    <span class="sidebar-text">Account</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Add this button in your HTML after the sidebar -->
+    <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <div class="page-header">
+            <h1>My Grades</h1>
+            <div class="controls-container">
+                <div class="year-selector">
+                    <select id="year-select">
+                        <option value="1stYear">1st Year (2023-2024)</option>
+                        <option value="2ndYear" selected>2nd Year (2024-2025)</option>
+                        <option value="3rdYear">3rd Year (2025-2026)</option>
+                        <option value="4thYear">4th Year (2026-2027)</option>
+                    </select>
+                </div>
+                <div class="year-selector">
+                    <select id="semester-select">
+                        <option value="finals2ndSem">Finals 2nd Semester</option>
+                        <option value="midterms2ndSem">Midterms 2nd Semester</option>
+                        <option value="finals1stSem">Finals 1st Semester</option>
+                        <option value="midterms1stSem">Midterms 1st Semester</option>
+                    </select>
+                </div>
+                <button id="export-grades" class="btn-export">
+                    <span class="export-icon">📥</span>
+                    Export Grades
+                </button>
+            </div>
+        </div>
+
+        <!-- Grade Summary Card -->
+        <div class="grade-summary-card">
+            <div class="summary-header">
+                <h2>Semester Overview</h2>
+                <div class="gwa-display">
+                    <span class="gwa-label">Current GWA</span>
+                    <span class="gwa-value">1.25</span>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Semester Progress</span>
+                    <span>85%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 85%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Grades Section -->
+        <div class="course-grades-section">
+            <h2>Course Grades</h2>
+
+            <!-- Course Cards Container -->
+            <div class="course-cards-container">
+                <!-- Course Card 1 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-title-container">
+                            <h3 class="course-title">PATHFIT</h3>
+                            <span class="course-code">PE</span>
+                        </div>
+                        <div class="course-grade">
+                            <span class="grade" data-value="1.0">1.0</span>
+                            <span class="grade-percent">96%</span>
+                        </div>
+                    </div>
+                    <div class="grade-breakdown">
+                        <div class="grade-item">
+                            <span class="item-name">Quiz</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">95%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grade-item">
+                            <span class="item-name">Laboratory</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">98%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 98%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grade-item">
+                            <span class="item-name">Exams</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">94%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 94%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-title-container">
+                            <h3 class="course-title">DATABASE</h3>
+                            <span class="course-code">CC104</span>
+                        </div>
+                        <div class="course-grade">
+                            <span class="grade" data-value="1.5">1.5</span>
+                            <span class="grade-percent">90%</span>
+                        </div>
+                    </div>
+                    <div class="grade-breakdown">
+                        <div class="grade-item">
+                            <span class="item-name">Quiz</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">92%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 92%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grade-item">
+                            <span class="item-name">Assignment</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">88%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grade-item">
+                            <span class="item-name">Exams</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">91%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 91%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-title-container">
+                            <h3 class="course-title">INTRODUCTION TO HUMAN COMPUTER INTERACTION</h3>
+                            <span class="course-code">ITCHI01</span>
+                        </div>
+                        <div class="course-grade">
+                            <span class="grade" data-value="1.0">1.0</span>
+                            <span class="grade-percent">97%</span>
+                        </div>
+                    </div>
+                    <div class="grade-breakdown">
+                        <div class="grade-item">
+                            <span class="item-name">Recitation</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">96%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 96%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grade-item">
+                            <span class="item-name">Essays</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">98%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 98%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grade-item">
+                            <span class="item-name">Exams</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">97%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 97%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 4 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-title-container">
+                            <h3 class="course-title">DISCRETE MATHEMATICS</h3>
+                            <span class="course-code">ITMS02</span>
+                        </div>
+                        <div class="course-grade">
+                            <span class="grade grade-high" data-value="1.25">1.25</span>
+                            <span class="grade-percent">92%</span>
+                        </div>
+                    </div>
+                    <div class="grade-breakdown">
+                        <div class="grade-item">
+                            <span class="item-name">Recitation</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">90%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grade-item">
+                            <span class="item-name">Written Works</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">94%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 94%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grade-item">
+                            <span class="item-name">Exams</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">92%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 92%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 5 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-title-container">
+                            <h3 class="course-title">CONTEMPORARY WORLD</h3>
+                            <span class="course-code">GE03</span>
+                        </div>
+                        <div class="course-grade">
+                            <span class="grade" data-value="1.0">1.0</span>
+                            <span class="grade-percent">95%</span>
+                        </div>
+                    </div>
+                    <div class="grade-breakdown">
+                        <div class="grade-item">
+                            <span class="item-name">Attendance</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">98%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 98%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grade-item">
+                            <span class="item-name">Participation</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">95%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grade-item">
+                            <span class="item-name">Physical Tests</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">93%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 93%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 6 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-title-container">
+                            <h3 class="course-title">LIFE WORKS OF RIZAL</h3>
+                            <span class="course-code">GE09</span>
+                        </div>
+                        <div class="course-grade">
+                            <span class="grade" data-value="1.5">1.5</span>
+                            <span class="grade-percent">88%</span>
+                        </div>
+                    </div>
+                    <div class="grade-breakdown">
+                        <div class="grade-item">
+                            <span class="item-name">Recitation</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">85%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grade-item">
+                            <span class="item-name">Papers</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">90%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grade-item">
+                            <span class="item-name">Exams</span>
+                            <div class="item-grade-container">
+                                <span class="item-grade">89%</span>
+                                <div class="item-bar">
+                                    <div class="item-progress" style="width: 89%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grade Trends Section -->
+        <div class="grade-trends-section">
+            <h2>Grade Trends</h2>
+            <div class="chart-container">
+                <div class="chart-placeholder">
+                    <div class="chart-bars">
+                        <div class="chart-bar active" style="height: 80%"><span>1.75</span></div>
+                        <div class="chart-bar active" style="height: 85%"><span>1.5</span></div>
+                        <div class="chart-bar active" style="height: 90%"><span>1.25</span></div>
+                        <div class="chart-bar active" style="height: 95%"><span>1.25</span></div>
+                    </div>
+                    <div class="chart-labels">
+                        <span>Midterms 1st Sem</span>
+                        <span>Finals 1st Sem</span>
+                        <span>Midterms 2nd Sem</span>
+                        <span>Finals 2nd Sem</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    document.getElementById('export-grades').addEventListener('click', function () {
+        const confirmExport = confirm("Are you sure you want to export your grades?");
+
+        if (!confirmExport) return; // Stop if user clicks "Cancel"
+
+        const chartBars = document.querySelectorAll('.chart-bar');
+
+        chartBars.forEach(bar => {
+            const heightPercent = parseInt(bar.style.height);
+            const pixelHeight = (heightPercent / 100) * 200; // Convert % to px
+            bar.setAttribute('data-original-height', bar.style.height);
+            bar.style.height = pixelHeight + 'px';
+            bar.classList.add('print-visible');
+        });
+
+        // Trigger print
+        window.print();
+
+        // After print, restore original states
+        window.addEventListener('afterprint', function () {
+            chartBars.forEach(bar => {
+                const originalHeight = bar.getAttribute('data-original-height');
+                if (originalHeight) {
+                    bar.style.height = originalHeight;
+                    bar.removeAttribute('data-original-height');
+                }
+                bar.classList.remove('print-visible');
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleButton = document.getElementById('mobile-menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        // Only run the mobile menu code if elements exist
+        if (toggleButton && sidebar) {
+            // Function to check screen size and update UI
+            function checkScreenSize() {
+                if (window.innerWidth <= 400) {
+                    toggleButton.style.display = 'block';
+                } else {
+                    toggleButton.style.display = 'none';
+                    if (sidebar) {
+                        sidebar.classList.remove('active');
+                    }
+                }
+            }
+
+            // Toggle sidebar when button is clicked
+            toggleButton.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+
+            // Close sidebar when clicking outside
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 400 && 
+                    sidebar.classList.contains('active') && 
+                    !sidebar.contains(event.target) && 
+                    !toggleButton.contains(event.target)) {
+                    sidebar.classList.remove('active');
+                }
+            });
+
+            // Initial check and add resize listener
+            checkScreenSize();
+            window.addEventListener('resize', checkScreenSize);
+        }
+
+        // Other initialization code...
+    });
+
+    // Make chart responsive
+    window.addEventListener('resize', function () {
+        const chartContainer = document.querySelector('.chart-container');
+        const chartPlaceholder = document.querySelector('.chart-placeholder');
+
+        if (window.innerWidth <= 576) {
+            chartPlaceholder.style.minWidth = '300px';
+        } else {
+            chartPlaceholder.style.minWidth = '400px';
+        }
+
+        // Ensure chart bars are properly sized
+        const chartBars = document.querySelectorAll('.chart-bar');
+        chartBars.forEach(bar => {
+            // Make sure bars have a minimum height for visibility
+            if (bar.style.height.includes('%')) {
+                const percentage = parseInt(bar.style.height);
+                if (percentage < 10) bar.style.height = '10%';
+            }
+        });
+    });
+
+    // Ensure chart is visible when page loads
+    document.addEventListener('DOMContentLoaded', function () {
+        const chartBars = document.querySelectorAll('.chart-bar');
+        // Apply explicit heights for chart bars to ensure they render properly
+        chartBars.forEach(bar => {
+            if (bar.style.height.includes('%')) {
+                // Add a class to ensure visibility in print mode
+                bar.classList.add('print-visible');
+            }
+        });
+    });
+</script>
+</body>
+
+</html>

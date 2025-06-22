@@ -1,0 +1,777 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Header Styles */
+.top-header {
+    background-color: #FF7043;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 63px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px; /* Increased font size */
+    font-weight: bold;
+}
+
+.logo span {
+    letter-spacing: 0.5px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 260px; /* Slightly wider to accommodate larger font */
+    background: linear-gradient(to bottom, #333, #222);
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 63px;
+    left: 0;
+    overflow-y: auto;
+    padding-top: 10px;
+    transition: all 0.3s ease;
+    z-index: 99;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin: 8px 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ccc;
+    padding: 14px 20px; /* Increased padding for larger touch targets */
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.sidebar-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #FF7043;
+    transform: translateX(5px);
+}
+
+.sidebar-menu li.active a {
+    background: linear-gradient(90deg, rgba(255, 112, 67, 0.2), transparent);
+    color: #FF7043;
+    border-left: 4px solid #FF7043;
+    padding-left: 16px;
+}
+
+.sidebar-icon {
+    font-size: 20px; /* Increased font size */
+    margin-right: 14px;
+    width: 26px;
+    text-align: center;
+}
+
+.sidebar-text {
+    font-size: 18px; /* Increased font size */
+    font-weight: 500;
+}
+
+/* Main Content Adjustment */
+.main-content {
+    margin-left: 260px; /* Match sidebar width */
+    margin-top: 63px;
+    padding: 30px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+    }
+    .sidebar-text {
+        display: none;
+    }
+    .main-content {
+        margin-left: 70px;
+    }
+}
+
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.page-header h1 {
+    color: #333;
+    font-size: 28px;
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+.controls-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Year Selector Styles */
+.year-selector select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background-color: white;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s;
+    width: 100%;
+    min-width: 160px;
+}
+
+.year-selector select:hover {
+    border-color: #FF7043;
+}
+
+.year-selector select:focus {
+    border-color: #FF7043;
+    box-shadow: 0 0 0 2px rgba(255, 112, 67, 0.2);
+}
+
+/* Export Button Styles */
+.btn-export {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #FF7043;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.btn-export:hover {
+    background-color: #F4511E;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-export:active {
+    transform: translateY(0);
+}
+
+.export-icon {
+    font-size: 16px;
+}
+
+/* Grade Summary Card */
+.grade-summary-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.summary-header h2 {
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.gwa-display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.gwa-label {
+    font-size: 14px;
+    color: #666;
+}
+
+.gwa-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #FF7043;
+}
+
+.progress-container {
+    margin-bottom: 20px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+.progress-bar {
+    height: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #FF7043;
+    border-radius: 5px;
+}
+
+/* Course Grades Section */
+.course-grades-section {
+    margin-bottom: 30px;
+}
+
+.course-grades-section h2 {
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.course-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.course-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    position: relative;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.course-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #FF7043;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.course-card:hover::before {
+    transform: scaleY(1);
+}
+
+.course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.course-title-container {
+    flex: 1;
+    min-width: 200px;
+}
+
+.course-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    word-wrap: break-word;
+}
+
+.course-code {
+    font-size: 14px;
+    color: #666;
+}
+
+.course-grade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 8px 15px;
+    min-width: 100px;
+}
+
+.grade {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FF7043;
+}
+
+.grade-percent {
+    font-size: 14px;
+    color: #666;
+}
+
+.grade-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.grade-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.item-name {
+    font-size: 14px;
+    color: #333;
+    flex: 1;
+    min-width: 90px;
+}
+
+.item-grade-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 2;
+    min-width: 150px;
+}
+
+.item-grade {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    width: 40px;
+    text-align: right;
+}
+
+.item-bar {
+    flex: 1;
+    height: 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.item-progress {
+    height: 100%;
+    background-color: #FF7043;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+/* Grade Trends Section */
+.grade-trends-section {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+}
+
+.grade-trends-section h2 {
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.chart-container {
+    height: 300px;
+    padding: 20px 10px;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.chart-placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 400px; /* Ensures chart doesn't get too squished */
+}
+
+.chart-bars {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding-bottom: 10px;
+}
+
+.chart-bar {
+    width: 60px;
+    background-color: #f0f0f0;
+    border-radius: 6px 6px 0 0;
+    position: relative;
+    transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10px;
+}
+
+.chart-bar span {
+    position: absolute;
+    top: -25px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+}
+
+.chart-bar.active {
+    background-color: #FF7043;
+}
+
+.chart-bar.active span {
+    color: #FF7043;
+}
+
+.chart-bar:hover {
+    background-color: #FFB74D;
+    cursor: pointer;
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.chart-labels span {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    width: 80px;
+}
+
+/* Color-coding for grades */
+.course-card .grade[data-value="1.0"] {
+    color: #2E7D32; /* Dark green for excellent */
+}
+
+.course-card .grade[data-value="1.25"] {
+    color: #43A047; /* Green for very good */
+}
+
+.course-card .grade[data-value="1.5"] {
+    color: #689F38; /* Light green for good */
+}
+
+.course-card .grade[data-value="1.75"] {
+    color: #FFA000; /* Amber for satisfactory */
+}
+
+.course-card .grade[data-value="2.0"],
+.course-card .grade[data-value="2.25"] {
+    color: #F57C00; /* Orange for fair */
+}
+
+.course-card .grade[data-value="2.5"],
+.course-card .grade[data-value="2.75"] {
+    color: #E64A19; /* Deep orange for passing */
+}
+
+.course-card .grade[data-value="3.0"] {
+    color: #D32F2F; /* Red for barely passing */
+}
+
+.course-card .grade[data-value="5.0"] {
+    color: #B71C1C; /* Dark red for failing */
+}
+
+/* Progress bar color based on percentage */
+.item-progress[style*="width: 9"],
+.item-progress[style*="width: 100"] {
+    background-color: #2E7D32; /* Dark green for 90-100% */
+}
+
+.item-progress[style*="width: 8"] {
+    background-color: #43A047; /* Green for 80-89% */
+}
+
+.item-progress[style*="width: 7"] {
+    background-color: #689F38; /* Light green for 70-79% */
+}
+
+.item-progress[style*="width: 6"] {
+    background-color: #FFA000; /* Amber for 60-69% */
+}
+
+.item-progress[style*="width: 5"] {
+    background-color: #F57C00; /* Orange for 50-59% */
+}
+
+.item-progress[style*="width: 4"],
+.item-progress[style*="width: 3"],
+.item-progress[style*="width: 2"],
+.item-progress[style*="width: 1"],
+.item-progress[style*="width: 0"] {
+    background-color: #D32F2F; /* Red for below 50% */
+}
+
+/* Print styles for report printing */
+@media print {
+    .sidebar, .top-header {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .course-card, .grade-summary-card, .grade-trends-section {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .course-cards-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    body {
+        background-color: white;
+    }
+}
+
+/* Improved responsiveness */
+@media (max-width: 1200px) {
+    .course-cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .course-cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+    }
+    
+    .sidebar-text {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 70px;
+        padding: 80px 15px 20px;
+    }
+
+    .course-cards-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .controls-container {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+    
+    .year-selector {
+        width: 100%;
+    }
+    
+    .btn-export {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .summary-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .gwa-display {
+        align-items: flex-start;
+        margin-top: 5px;
+    }
+    
+    .course-header {
+        flex-direction: column;
+    }
+    
+    .course-grade {
+        margin-top: 10px;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .item-name {
+        min-width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .item-grade-container {
+        width: 100%;
+    }
+    
+    .chart-bar {
+        width: 40px;
+    }
+    
+    .chart-labels span {
+        font-size: 10px;
+        width: 60px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 400px) {
+    .main-content {
+        margin-left: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    /* Add hamburger menu toggle for very small screens */
+    .mobile-menu-toggle {
+        display: none;
+        position: fixed;
+        top: 70px;
+        right: 15px;
+        z-index: 101;
+        background: #FF7043;
+        border: none;
+        color: white;
+        font-size: 24px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+    
+}
+
+@media print {
+    .chart-bar.print-visible {
+        display: block !important;
+        background-color: #FF7043 !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .chart-bar.print-visible span {
+        color: #FF7043 !important;
+    }
+
+    .chart-container {
+        overflow: visible !important;
+        height: auto !important;
+        min-height: 300px !important;
+    }
+}
+/* --- Fade-in Animation for Main Content --- */
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply fade-in to main content */
+.main-content,
+.fadein-content {
+    animation: fadeInContent 0.7s cubic-bezier(0.33, 1, 0.68, 1) both;
+}
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1000;
+    padding: 0.5rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@media (max-width: 400px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+}

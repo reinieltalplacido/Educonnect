@@ -1,0 +1,170 @@
+  <header class="top-header">
+        <div class="logo">
+            <span>EduConnect</span>
+        </div>
+    </header>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a href="dashboard.html">
+                        <span class="sidebar-icon">🏠</span>
+                        <span class="sidebar-text">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="courses.html">
+                        <span class="sidebar-icon">📚</span>
+                        <span class="sidebar-text">Courses</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="calendar.html">
+                        <span class="sidebar-icon">📅</span>
+                        <span class="sidebar-text">Calendar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="grades.html">
+                        <span class="sidebar-icon">📊</span>
+                        <span class="sidebar-text">Grades</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <span class="sidebar-icon">💬</span>
+                        <span class="sidebar-text">Chat</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="account.html">
+                        <span class="sidebar-icon">👤</span>
+                        <span class="sidebar-text">Account</span>
+                    </a>
+                </li>
+                <!-- Logout Button -->
+                <li class="logout">
+                    <a href="logout.html">
+                        <span class="sidebar-icon">🚪</span>
+                        <span class="sidebar-text">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+
+        .top-header {
+    background-color: #FF7043; /* Orange color */
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 63px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #FF7043;
+}
+
+.btn-logout {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.btn-logout:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 240px;
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    overflow-y: auto;
+    padding-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin: 5px 0;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Removes underline */
+    color: white; /* Ensures text is white */
+    padding: 12px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-menu a:hover {
+    background-color: #444; /* Darker background on hover */
+    color: #FF7043; /* Orange text on hover */
+}
+
+.sidebar-menu li.active a {
+    background-color: #505050;
+    border-left: 4px solid #FF7043;
+    padding-left: 16px;
+}
+
+.sidebar-icon {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.sidebar-text {
+    font-size: 16px;
+    font-weight: 500;
+}
